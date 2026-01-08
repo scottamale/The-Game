@@ -1,3 +1,4 @@
+
 export type Universe = 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Sports';
 
 export type HP_House = 'Gryffindor' | 'Slytherin' | 'Ravenclaw' | 'Hufflepuff';
@@ -38,6 +39,13 @@ export interface GameState {
   score: number;
   answers: boolean[];
   gameOverReason?: 'timeout' | 'all-wrong';
+}
+
+export interface LeaderboardEntry {
+  name: string;
+  score: number;
+  date: string;
+  team: Team;
 }
 
 export const HP_THEMES: Record<HP_House, Theme> = {

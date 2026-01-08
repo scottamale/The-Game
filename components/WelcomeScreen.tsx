@@ -1,6 +1,7 @@
-import React from 'react';
-import { Universe, Team, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, SPORTS_THEMES, Theme } from '../types';
-import { Target, Flame, Wand2, Shield, Sparkles, Zap, Rocket, Mountain, Sword, Trophy, Ticket, Activity } from 'lucide-react';
+
+import React, { useState, useEffect } from 'react';
+import { Universe, Team, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, SPORTS_THEMES, Theme, LeaderboardEntry } from '../types';
+import { Target, Flame, Wand2, Shield, Sparkles, Zap, Rocket, Mountain, Sword, Trophy, Ticket, Activity, Crown, X } from 'lucide-react';
 
 interface WelcomeScreenProps {
   universe: Universe;
@@ -9,6 +10,9 @@ interface WelcomeScreenProps {
 }
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, onBack }) => {
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
+
   let themes: Record<string, Theme>;
   
   if (universe === 'Harry Potter') themes = HP_THEMES;
@@ -70,31 +74,38 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
   let containerClass = "";
   let titleGradient = "";
   let buttonBorderClass = "";
+  let themeAccentText = "";
 
   if (universe === 'Harry Potter') {
     containerClass = 'glass-panel-hp';
     titleGradient = 'bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600';
     buttonBorderClass = 'border-amber-500/20 hover:border-amber-400/60';
+    themeAccentText = 'text-amber-400';
   } else if (universe === 'Hunger Games') {
     containerClass = 'glass-panel-hg';
     titleGradient = 'bg-gradient-to-b from-orange-400 via-red-500 to-red-800';
     buttonBorderClass = 'border-white/10 hover:border-orange-500/60';
+    themeAccentText = 'text-orange-500';
   } else if (universe === 'Marvel') {
     containerClass = 'glass-panel-marvel';
     titleGradient = 'bg-gradient-to-b from-sky-300 via-blue-500 to-indigo-600';
     buttonBorderClass = 'border-sky-500/20 hover:border-sky-400/60';
+    themeAccentText = 'text-sky-400';
   } else if (universe === 'LotR') {
     containerClass = 'glass-panel-lotr';
     titleGradient = 'bg-gradient-to-b from-yellow-100 via-yellow-500 to-amber-700';
     buttonBorderClass = 'border-yellow-500/20 hover:border-yellow-400/60';
+    themeAccentText = 'text-yellow-500';
   } else if (universe === 'Star Wars') {
     containerClass = 'glass-panel-sw';
     titleGradient = 'bg-gradient-to-b from-blue-100 via-blue-400 to-violet-600';
     buttonBorderClass = 'border-blue-500/30 hover:border-blue-300/80';
+    themeAccentText = 'text-blue-400';
   } else {
     containerClass = 'glass-panel-sports';
     titleGradient = 'bg-gradient-to-b from-white via-stone-200 to-stone-400';
     buttonBorderClass = 'border-white/30 hover:border-white/80';
+    themeAccentText = 'text-white';
   }
 
   const getBackText = () => {
@@ -106,22 +117,45 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
     return 'Back to Locker Room';
   };
 
+  useEffect(() => {
+    if (showLeaderboard) {
+      const key = `trivia_lb_${universe.replace(/\s+/g, '_').toLowerCase()}`;
+      const stored = localStorage.getItem(key);
+      const currentLb: LeaderboardEntry[] = stored ? JSON.parse(stored) : [];
+      currentLb.sort((a, b) => b.score - a.score);
+      setLeaderboard(currentLb);
+    }
+  }, [showLeaderboard, universe]);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] w-full max-w-5xl mx-auto p-6 animate-fade-in relative z-10">
-      <button 
-        onClick={onBack}
-        className={`absolute top-0 left-6 uppercase text-xs tracking-[0.2em] font-cinzel transition-all duration-300 flex items-center gap-2
-          ${universe === 'Harry Potter' ? 'text-amber-200/60 hover:text-amber-100 hover:drop-shadow-[0_0_5px_rgba(251,191,36,0.8)]' : 
-            universe === 'Hunger Games' ? 'text-stone-500 hover:text-orange-500 hover:drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]' :
-            universe === 'Marvel' ? 'text-sky-500/60 hover:text-sky-300 hover:drop-shadow-[0_0_5px_rgba(14,165,233,0.8)]' :
-            universe === 'LotR' ? 'text-yellow-600/60 hover:text-yellow-400 hover:drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]' :
-            universe === 'Star Wars' ? 'text-blue-400/60 hover:text-blue-200 hover:drop-shadow-[0_0_5px_rgba(96,165,250,0.8)]' :
-            'text-white/60 hover:text-white hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]'
-          }
-        `}
-      >
-        <span>←</span> {getBackText()}
-      </button>
+      
+      {/* Top Controls */}
+      <div className="absolute top-0 w-full flex justify-between px-6 z-20">
+        <button 
+          onClick={onBack}
+          className={`uppercase text-xs tracking-[0.2em] font-cinzel transition-all duration-300 flex items-center gap-2
+            ${universe === 'Harry Potter' ? 'text-amber-200/60 hover:text-amber-100 hover:drop-shadow-[0_0_5px_rgba(251,191,36,0.8)]' : 
+              universe === 'Hunger Games' ? 'text-stone-500 hover:text-orange-500 hover:drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]' :
+              universe === 'Marvel' ? 'text-sky-500/60 hover:text-sky-300 hover:drop-shadow-[0_0_5px_rgba(14,165,233,0.8)]' :
+              universe === 'LotR' ? 'text-yellow-600/60 hover:text-yellow-400 hover:drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]' :
+              universe === 'Star Wars' ? 'text-blue-400/60 hover:text-blue-200 hover:drop-shadow-[0_0_5px_rgba(96,165,250,0.8)]' :
+              'text-white/60 hover:text-white hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]'
+            }
+          `}
+        >
+          <span>←</span> {getBackText()}
+        </button>
+
+        <button 
+          onClick={() => setShowLeaderboard(true)}
+          className={`uppercase text-xs tracking-[0.2em] font-cinzel transition-all duration-300 flex items-center gap-2
+             ${themeAccentText} opacity-70 hover:opacity-100 hover:scale-105
+          `}
+        >
+          <span>Hall of Fame</span> <Trophy className="w-4 h-4" />
+        </button>
+      </div>
 
       <div className="text-center mb-16 relative">
         {/* Decorative elements behind title */}
@@ -253,6 +287,57 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
           </p>
         </div>
       </div>
+
+      {/* Leaderboard Overlay */}
+      {showLeaderboard && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+          <div className={`relative w-full max-w-lg rounded-xl overflow-hidden border ${buttonBorderClass} ${containerClass}`}>
+            <div className="p-6 border-b border-white/10 flex justify-between items-center">
+              <h3 className={`text-2xl font-bold ${fontClass} uppercase tracking-widest flex items-center gap-2 ${themeAccentText}`}>
+                <Crown className="w-6 h-6" /> Hall of Fame
+              </h3>
+              <button onClick={() => setShowLeaderboard(false)} className="text-stone-400 hover:text-white transition-colors">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            <div className="p-0 max-h-[60vh] overflow-y-auto custom-scrollbar">
+              {leaderboard.length > 0 ? (
+                <table className="w-full text-left border-collapse">
+                  <thead className="bg-black/30 sticky top-0 backdrop-blur-md">
+                    <tr className="text-xs uppercase text-stone-500 border-b border-white/5">
+                      <th className="p-4 font-medium text-center">#</th>
+                      <th className="p-4 font-medium">Name</th>
+                      <th className="p-4 font-medium text-right">Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {leaderboard.slice(0, 10).map((entry, index) => (
+                      <tr key={index} className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
+                        <td className={`p-4 text-center font-bold ${index < 3 ? themeAccentText : 'text-stone-500'}`}>
+                          {index + 1}
+                        </td>
+                        <td className="p-4">
+                          <span className="font-medium text-stone-300 uppercase text-sm tracking-wider">
+                            {entry.name}
+                          </span>
+                        </td>
+                        <td className="p-4 text-right font-mono font-bold text-stone-400">
+                          {entry.score}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <div className="p-12 text-center text-stone-500 italic font-serif">
+                  No heroes have claimed victory yet.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
