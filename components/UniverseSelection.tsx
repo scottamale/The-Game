@@ -99,7 +99,7 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           onClick={() => onSelectUniverse('Stranger Things')}
           className="group relative h-80 rounded-2xl overflow-hidden border-2 border-red-900 transition-all duration-700 bg-gradient-to-b from-stone-900 to-black card-st"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1626544827763-d516dce335ca?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
