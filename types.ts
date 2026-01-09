@@ -1,14 +1,14 @@
 
-export type Universe = 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Sports';
+export type Universe = 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Stranger Things';
 
 export type HP_House = 'Gryffindor' | 'Slytherin' | 'Ravenclaw' | 'Hufflepuff';
 export type HG_Faction = 'District 12' | 'District 2' | 'District 4' | 'The Capitol';
 export type Marvel_Faction = 'Avengers' | 'Guardians' | 'Wakanda' | 'Asgard';
 export type LotR_Faction = 'The Fellowship' | 'Mordor' | 'Elves of Rivendell' | 'Dwarves of Erebor';
 export type SW_Faction = 'Jedi Order' | 'The Sith' | 'Rebel Alliance' | 'Galactic Empire';
-export type Sports_League = 'Gridiron' | 'Hardwood' | 'Diamond' | 'The Bleachers';
+export type ST_Faction = 'The Party' | 'Scoops Ahoy' | 'Hellfire Club' | 'Hawkins High';
 
-export type Team = HP_House | HG_Faction | Marvel_Faction | LotR_Faction | SW_Faction | Sports_League;
+export type Team = HP_House | HG_Faction | Marvel_Faction | LotR_Faction | SW_Faction | ST_Faction;
 
 export interface Theme {
   primary: string;
@@ -283,49 +283,49 @@ export const SW_THEMES: Record<SW_Faction, Theme> = {
   }
 };
 
-export const SPORTS_THEMES: Record<Sports_League, Theme> = {
-  'Gridiron': {
-    primary: 'bg-emerald-900',
-    secondary: 'bg-white',
-    border: 'border-emerald-400',
-    text: 'text-emerald-100',
-    accent: 'text-yellow-400',
-    button: 'bg-gradient-to-r from-emerald-800 to-emerald-700',
-    buttonHover: 'hover:from-emerald-700 hover:to-emerald-600',
-    gradient: 'from-emerald-950 via-green-900 to-black',
-    iconColor: 'text-white'
+export const ST_THEMES: Record<ST_Faction, Theme> = {
+  'The Party': {
+    primary: 'bg-purple-900',
+    secondary: 'bg-red-500',
+    border: 'border-purple-500',
+    text: 'text-purple-300',
+    accent: 'text-red-400',
+    button: 'bg-gradient-to-r from-purple-900 to-purple-700',
+    buttonHover: 'hover:from-purple-800 hover:to-purple-600',
+    gradient: 'from-purple-950 via-indigo-900 to-black',
+    iconColor: 'text-purple-400'
   },
-  'Hardwood': {
-    primary: 'bg-orange-900',
-    secondary: 'bg-orange-500',
-    border: 'border-orange-600',
-    text: 'text-orange-100',
-    accent: 'text-black',
-    button: 'bg-gradient-to-r from-orange-800 to-orange-700',
-    buttonHover: 'hover:from-orange-700 hover:to-orange-600',
-    gradient: 'from-orange-950 via-amber-900 to-black',
-    iconColor: 'text-orange-300'
-  },
-  'Diamond': {
-    primary: 'bg-blue-900',
-    secondary: 'bg-red-600',
-    border: 'border-white',
+  'Scoops Ahoy': {
+    primary: 'bg-blue-800',
+    secondary: 'bg-red-500',
+    border: 'border-red-500',
     text: 'text-white',
-    accent: 'text-red-500',
-    button: 'bg-gradient-to-r from-blue-800 to-blue-700',
-    buttonHover: 'hover:from-blue-700 hover:to-blue-600',
-    gradient: 'from-blue-950 via-slate-900 to-black',
+    accent: 'text-red-400',
+    button: 'bg-gradient-to-r from-blue-700 to-blue-600',
+    buttonHover: 'hover:from-blue-600 hover:to-blue-500',
+    gradient: 'from-blue-900 via-white/10 to-red-900',
     iconColor: 'text-white'
   },
-  'The Bleachers': {
-    primary: 'bg-indigo-900',
-    secondary: 'bg-yellow-400',
-    border: 'border-indigo-500',
-    text: 'text-indigo-200',
-    accent: 'text-yellow-300',
-    button: 'bg-gradient-to-r from-indigo-800 to-indigo-700',
-    buttonHover: 'hover:from-indigo-700 hover:to-indigo-600',
-    gradient: 'from-indigo-950 via-purple-900 to-black',
-    iconColor: 'text-yellow-400'
+  'Hellfire Club': {
+    primary: 'bg-black',
+    secondary: 'bg-red-600',
+    border: 'border-red-600',
+    text: 'text-red-500',
+    accent: 'text-white',
+    button: 'bg-gradient-to-r from-red-900 to-black',
+    buttonHover: 'hover:from-red-800 hover:to-stone-900',
+    gradient: 'from-black via-red-950 to-black',
+    iconColor: 'text-red-500'
+  },
+  'Hawkins High': {
+    primary: 'bg-green-800',
+    secondary: 'bg-orange-500',
+    border: 'border-orange-500',
+    text: 'text-orange-400',
+    accent: 'text-white',
+    button: 'bg-gradient-to-r from-green-900 to-green-700',
+    buttonHover: 'hover:from-green-800 hover:to-green-600',
+    gradient: 'from-green-950 via-orange-900 to-black',
+    iconColor: 'text-orange-400'
   }
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Universe } from '../types';
-import { Wand2, Flame, Zap, Mountain, Sword, Trophy } from 'lucide-react';
+import { Wand2, Flame, Zap, Mountain, Sword, Radio } from 'lucide-react';
 
 interface UniverseSelectionProps {
   onSelectUniverse: (universe: Universe) => void;
@@ -94,18 +94,18 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           </div>
         </button>
 
-        {/* Sports Card */}
+        {/* Stranger Things Card */}
         <button
-          onClick={() => onSelectUniverse('Sports')}
-          className="group relative h-80 rounded-2xl overflow-hidden border-2 border-green-800 transition-all duration-700 bg-gradient-to-b from-green-950 to-black card-sports"
+          onClick={() => onSelectUniverse('Stranger Things')}
+          className="group relative h-80 rounded-2xl overflow-hidden border-2 border-red-900 transition-all duration-700 bg-gradient-to-b from-stone-900 to-black card-st"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1626544827763-d516dce335ca?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
-            <Trophy className="w-10 h-10 text-yellow-500 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
-            <h3 className="text-2xl font-stencil font-bold text-yellow-100 mb-2 group-hover:text-yellow-400 transition-colors">Pro Sports</h3>
-            <p className="text-yellow-200/70 font-sans italic text-sm">NFL, NBA & MLB</p>
+            <Radio className="w-10 h-10 text-red-500 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
+            <h3 className="text-2xl font-cinzel font-bold text-red-100 mb-2 group-hover:text-red-400 transition-colors">Stranger Things</h3>
+            <p className="text-red-200/70 font-serif italic text-sm">Upside Down & Eggos</p>
           </div>
         </button>
       </div>

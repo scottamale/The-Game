@@ -1,8 +1,7 @@
 import { Question } from './types';
 
-// ... (Existing HG, HP, MARVEL, LOTR Questions - included by reference, not deleting them)
+// ... (Existing HG, HP, MARVEL, LOTR, SW Questions preserved below)
 export const HG_QUESTIONS: Question[] = [
-  // ... (Keep existing HG Questions)
   { id: 1, text: "What is the name of Katniss Everdeen's sister?", options: ["Primrose", "Rue", "Effie", "Clove"], correctAnswer: 0, difficulty: 'Easy' },
   { id: 2, text: "Which District is Katniss from?", options: ["District 1", "District 11", "District 12", "District 4"], correctAnswer: 2, difficulty: 'Easy' },
   { id: 3, text: "What weapon is Katniss famous for using?", options: ["Sword", "Trident", "Spear", "Bow and Arrow"], correctAnswer: 3, difficulty: 'Easy' },
@@ -38,7 +37,6 @@ export const HG_QUESTIONS: Question[] = [
 ];
 
 export const HP_QUESTIONS: Question[] = [
-    // ... (Keep existing HP Questions)
     { id: 101, text: "What is the name of Harry Potter's owl?", options: ["Errol", "Hedwig", "Scabbers", "Buckbeak"], correctAnswer: 1, difficulty: 'Easy' },
     { id: 102, text: "Which platform does the Hogwarts Express depart from?", options: ["Platform 9 3/4", "Platform 10", "Platform 42", "Platform 11 1/2"], correctAnswer: 0, difficulty: 'Easy' },
     { id: 103, text: "What position does Harry play on his Quidditch team?", options: ["Keeper", "Chaser", "Beater", "Seeker"], correctAnswer: 3, difficulty: 'Easy' },
@@ -57,7 +55,6 @@ export const HP_QUESTIONS: Question[] = [
 ];
 
 export const MARVEL_QUESTIONS: Question[] = [
-    // ... (Keep existing Marvel Questions)
     { id: 301, text: "What is Tony Stark's superhero alias?", options: ["Iron Man", "War Machine", "Hawkeye", "Ant-Man"], correctAnswer: 0, difficulty: 'Easy' },
     { id: 302, text: "What is Captain America's shield made of?", options: ["Adamantium", "Vibranium", "Steel", "Titanium"], correctAnswer: 1, difficulty: 'Easy' },
     { id: 303, text: "Who is the God of Thunder?", options: ["Loki", "Odin", "Thor", "Heimdall"], correctAnswer: 2, difficulty: 'Easy' },
@@ -76,7 +73,6 @@ export const MARVEL_QUESTIONS: Question[] = [
 ];
 
 export const LOTR_QUESTIONS: Question[] = [
-    // ... (Keep existing LOTR Questions)
     { id: 401, text: "Who is the bearer of the One Ring in 'The Fellowship of the Ring'?", options: ["Samwise Gamgee", "Frodo Baggins", "Bilbo Baggins", "Meriadoc Brandybuck"], correctAnswer: 1, difficulty: 'Easy' },
     { id: 402, text: "What is the name of the wizard who guides the Fellowship?", options: ["Saruman", "Radagast", "Gandalf", "Alatar"], correctAnswer: 2, difficulty: 'Easy' },
     { id: 403, text: "What creature is Gollum obsessed with?", options: ["The Arkenstone", "The One Ring", "Sting", "Mithril"], correctAnswer: 1, difficulty: 'Easy' },
@@ -89,15 +85,12 @@ export const LOTR_QUESTIONS: Question[] = [
 ];
 
 export const SW_QUESTIONS: Question[] = [
-    // --- EASY ---
     { id: 501, text: "What is the name of Han Solo's ship?", options: ["Star Destroyer", "X-Wing", "Millennium Falcon", "TIE Fighter"], correctAnswer: 2, difficulty: 'Easy' },
     { id: 502, text: "Who is Luke Skywalker's father?", options: ["Obi-Wan Kenobi", "Palpatine", "Anakin Skywalker", "Han Solo"], correctAnswer: 2, difficulty: 'Easy' },
     { id: 503, text: "What color is Yoda's lightsaber?", options: ["Blue", "Red", "Green", "Purple"], correctAnswer: 2, difficulty: 'Easy' },
     { id: 504, text: "Who built C-3PO?", options: ["Anakin Skywalker", "Luke Skywalker", "Padme Amidala", "Obi-Wan Kenobi"], correctAnswer: 0, difficulty: 'Easy' },
     { id: 505, text: "What is the weapon of a Jedi?", options: ["Blaster", "Lightsaber", "Phaser", "Bowcaster"], correctAnswer: 1, difficulty: 'Easy' },
     { id: 506, text: "Which bounty hunter captures Han Solo?", options: ["Jango Fett", "Bossk", "Boba Fett", "Dengar"], correctAnswer: 2, difficulty: 'Easy' },
-    
-    // --- MEDIUM ---
     { id: 507, text: "What is the name of Boba Fett's ship?", options: ["Slave I", "Razor Crest", "Ghost", "Falcon"], correctAnswer: 0, difficulty: 'Medium' },
     { id: 508, text: "Who killed Qui-Gon Jinn?", options: ["Darth Vader", "Darth Sidious", "Count Dooku", "Darth Maul"], correctAnswer: 3, difficulty: 'Medium' },
     { id: 509, text: "What planet is Chewbacca from?", options: ["Endor", "Kashyyyk", "Tatooine", "Hoth"], correctAnswer: 1, difficulty: 'Medium' },
@@ -106,8 +99,6 @@ export const SW_QUESTIONS: Question[] = [
     { id: 512, text: "Which order commanded the Clones to kill the Jedi?", options: ["Order 66", "Order 99", "Order 1", "Order 77"], correctAnswer: 0, difficulty: 'Medium' },
     { id: 513, text: "Who is the pilot of the Ghost in 'Rebels'?", options: ["Ezra", "Kanan", "Hera", "Sabine"], correctAnswer: 2, difficulty: 'Medium' },
     { id: 514, text: "What is the name of the Ewok who finds Leia?", options: ["Logray", "Teebo", "Wicket", "Chirpa"], correctAnswer: 2, difficulty: 'Medium' },
-
-    // --- INSANE ---
     { id: 515, text: "What is the name of the planet where the clones were created?", options: ["Geonosis", "Kamino", "Coruscant", "Naboo"], correctAnswer: 1, difficulty: 'Insane' },
     { id: 516, text: "Who was Count Dooku's padawan?", options: ["Qui-Gon Jinn", "Obi-Wan Kenobi", "Mace Windu", "Yoda"], correctAnswer: 0, difficulty: 'Insane' },
     { id: 517, text: "What is the name of the Sith wayfinder planet in 'Rise of Skywalker'?", options: ["Exegol", "Ahch-To", "Mustafar", "Moraband"], correctAnswer: 0, difficulty: 'Insane' },
@@ -116,32 +107,29 @@ export const SW_QUESTIONS: Question[] = [
     { id: 520, text: "Who created the Rule of Two?", options: ["Darth Bane", "Darth Revan", "Darth Plagueis", "Darth Sidious"], correctAnswer: 0, difficulty: 'Insane' }
 ];
 
-export const SPORTS_QUESTIONS: Question[] = [
-    // --- EASY ---
-    { id: 601, text: "How many points is a touchdown worth in the NFL?", options: ["3", "7", "6", "2"], correctAnswer: 2, difficulty: 'Easy' },
-    { id: 602, text: "Which NBA player is known as 'King James'?", options: ["Kobe Bryant", "Michael Jordan", "LeBron James", "Shaq"], correctAnswer: 2, difficulty: 'Easy' },
-    { id: 603, text: "What sport is played in the Super Bowl?", options: ["Baseball", "Basketball", "Soccer", "Football"], correctAnswer: 3, difficulty: 'Easy' },
-    { id: 604, text: "How many innings are in a standard MLB game?", options: ["7", "9", "4", "10"], correctAnswer: 1, difficulty: 'Easy' },
-    { id: 605, text: "Which team has the most NBA championships (tied)?", options: ["Lakers & Celtics", "Bulls & Warriors", "Knicks & Heat", "Spurs & Pistons"], correctAnswer: 0, difficulty: 'Easy' },
-    { id: 606, text: "What is it called when a bowler knocks down all pins in the first roll?", options: ["Spare", "Strike", "Turkey", "Split"], correctAnswer: 1, difficulty: 'Easy' },
+export const ST_QUESTIONS: Question[] = [
+    { id: 601, text: "What is Eleven's favorite food?", options: ["Pancakes", "Waffles", "Pizza", "Ice Cream"], correctAnswer: 1, difficulty: 'Easy' },
+    { id: 602, text: "What is the name of the alternate dimension?", options: ["The Dark Place", "The Other Side", "The Upside Down", "The Nether"], correctAnswer: 2, difficulty: 'Easy' },
+    { id: 603, text: "What is the name of the board game the boys play?", options: ["Dungeons & Dragons", "Risk", "Monopoly", "Settlers of Catan"], correctAnswer: 0, difficulty: 'Easy' },
+    { id: 604, text: "Who is the Chief of Police in Hawkins?", options: ["Joyce Byers", "Jim Hopper", "Ted Wheeler", "Murray Bauman"], correctAnswer: 1, difficulty: 'Easy' },
+    { id: 605, text: "What is the name of the ice cream shop where Steve works?", options: ["Scoops Ahoy", "Baskin-Robbins", "Dairy Queen", "Cold Stone"], correctAnswer: 0, difficulty: 'Easy' },
+    { id: 606, text: "What is the monster in Season 1 called?", options: ["The Mind Flayer", "The Demogorgon", "Vecna", "The Demodog"], correctAnswer: 1, difficulty: 'Easy' },
+    
+    { id: 607, text: "What is the name of Dustin's girlfriend?", options: ["Suzie", "Max", "Robin", "Erica"], correctAnswer: 0, difficulty: 'Medium' },
+    { id: 608, text: "What is the code name for Eleven?", options: ["The Mage", "The Weapon", "The Spy", "El"], correctAnswer: 3, difficulty: 'Medium' },
+    { id: 609, text: "What song saves Max from Vecna?", options: ["Should I Stay or Should I Go", "Running Up That Hill", "Material Girl", "Master of Puppets"], correctAnswer: 1, difficulty: 'Medium' },
+    { id: 610, text: "What is the name of the Russian scientist who helps Hopper?", options: ["Alexei", "Dimitri", "Yuri", "Grigori"], correctAnswer: 0, difficulty: 'Medium' },
+    { id: 611, text: "Which character runs the Hellfire Club?", options: ["Mike", "Dustin", "Eddie Munson", "Lucas"], correctAnswer: 2, difficulty: 'Medium' },
+    { id: 612, text: "What does Joyce use to communicate with Will in Season 1?", options: ["Walkie Talkies", "Christmas Lights", "Telephone", "Ouija Board"], correctAnswer: 1, difficulty: 'Medium' },
+    { id: 613, text: "What is the name of the mall in Season 3?", options: ["Hawkins Mall", "Starcourt Mall", "The Arcade", "Palace Arcade"], correctAnswer: 1, difficulty: 'Medium' },
 
-    // --- MEDIUM ---
-    { id: 607, text: "Who holds the record for most career home runs in MLB?", options: ["Babe Ruth", "Barry Bonds", "Hank Aaron", "Alex Rodriguez"], correctAnswer: 1, difficulty: 'Medium' },
-    { id: 608, text: "Which NFL team went undefeated in the 1972 season?", options: ["New England Patriots", "Chicago Bears", "Miami Dolphins", "Pittsburgh Steelers"], correctAnswer: 2, difficulty: 'Medium' },
-    { id: 609, text: "How many players are on the field for one NFL team?", options: ["10", "11", "12", "9"], correctAnswer: 1, difficulty: 'Medium' },
-    { id: 610, text: "Who is the NBA logo silhouette based on?", options: ["Michael Jordan", "Jerry West", "Wilt Chamberlain", "Kareem Abdul-Jabbar"], correctAnswer: 1, difficulty: 'Medium' },
-    { id: 611, text: "Which city has two MLB teams?", options: ["Chicago", "Boston", "Philadelphia", "Houston"], correctAnswer: 0, difficulty: 'Medium' },
-    { id: 612, text: "What is the maximum number of clubs a golfer can carry?", options: ["12", "13", "14", "15"], correctAnswer: 2, difficulty: 'Medium' },
-    { id: 613, text: "Who won the first Super Bowl?", options: ["Dallas Cowboys", "Green Bay Packers", "Kansas City Chiefs", "New York Jets"], correctAnswer: 1, difficulty: 'Medium' },
-    { id: 614, text: "Which NBA team plays in Madison Square Garden?", options: ["Brooklyn Nets", "New York Knicks", "Boston Celtics", "Philadelphia 76ers"], correctAnswer: 1, difficulty: 'Medium' },
-
-    // --- INSANE ---
-    { id: 615, text: "Who is the only player to win the Super Bowl MVP for a losing team?", options: ["Chuck Howley", "Peyton Manning", "Tom Brady", "Jerry Rice"], correctAnswer: 0, difficulty: 'Insane' },
-    { id: 616, text: "Which pitcher threw the only perfect game in World Series history?", options: ["Sandy Koufax", "Don Larsen", "Cy Young", "Roy Halladay"], correctAnswer: 1, difficulty: 'Insane' },
-    { id: 617, text: "Who holds the NBA record for most points in a single game?", options: ["Kobe Bryant", "Michael Jordan", "Wilt Chamberlain", "LeBron James"], correctAnswer: 2, difficulty: 'Insane' },
-    { id: 618, text: "Which NFL team has never played in a Super Bowl?", options: ["Detroit Lions", "Minnesota Vikings", "Buffalo Bills", "Cincinnati Bengals"], correctAnswer: 0, difficulty: 'Insane' },
-    { id: 619, text: "What year was the first World Series played?", options: ["1903", "1912", "1899", "1921"], correctAnswer: 0, difficulty: 'Insane' },
-    { id: 620, text: "Who is the all-time leading scorer in NBA history (as of 2024)?", options: ["Kareem Abdul-Jabbar", "LeBron James", "Karl Malone", "Kobe Bryant"], correctAnswer: 1, difficulty: 'Insane' }
+    { id: 614, text: "What is Vecna's human name?", options: ["Victor Creel", "Henry Creel", "Dr. Brenner", "Billy Hargrove"], correctAnswer: 1, difficulty: 'Insane' },
+    { id: 615, text: "What is the number tattooed on Kali's arm?", options: ["011", "008", "001", "010"], correctAnswer: 1, difficulty: 'Insane' },
+    { id: 616, text: "What is the name of the newspaper Nancy works for?", options: ["The Hawkins Post", "The Weekly Watcher", "The Daily Prophet", "The Indiana Gazette"], correctAnswer: 0, difficulty: 'Insane' },
+    { id: 617, text: "What year does Season 1 take place in?", options: ["1983", "1984", "1985", "1980"], correctAnswer: 0, difficulty: 'Insane' },
+    { id: 618, text: "Who was the first victim of the Demogorgon?", options: ["Barb", "Will", "Benny", "Shepard"], correctAnswer: 2, difficulty: 'Insane' },
+    { id: 619, text: "What is the name of the sensory deprivation tank Eleven uses?", options: ["The Bath", "The Void", "The Tank", "NINA"], correctAnswer: 3, difficulty: 'Insane' },
+    { id: 620, text: "What is the heavy metal song Eddie plays in the Upside Down?", options: ["Master of Puppets", "Enter Sandman", "The Trooper", "Run to the Hills"], correctAnswer: 0, difficulty: 'Insane' }
 ];
 
 export const POINTS_PER_QUESTION = 10;

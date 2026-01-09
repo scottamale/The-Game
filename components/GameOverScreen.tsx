@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Universe, Team, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, SPORTS_THEMES } from '../types';
+import { Universe, Team, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, ST_THEMES } from '../types';
 import { Skull, RefreshCw, Home, AlertTriangle } from 'lucide-react';
 import { playGameOver } from '../utils/audio';
 
@@ -18,7 +18,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ universe, team, reason,
   else if (universe === 'Marvel') theme = MARVEL_THEMES[team as keyof typeof MARVEL_THEMES];
   else if (universe === 'LotR') theme = LOTR_THEMES[team as keyof typeof LOTR_THEMES];
   else if (universe === 'Star Wars') theme = SW_THEMES[team as keyof typeof SW_THEMES];
-  else theme = SPORTS_THEMES[team as keyof typeof SPORTS_THEMES];
+  else theme = ST_THEMES[team as keyof typeof ST_THEMES];
 
   useEffect(() => {
     // Play specific game over sound on mount
@@ -80,15 +80,15 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ universe, team, reason,
       subText = "Order 66 executed.";
     }
   } else {
-    // Sports
+    // Stranger Things
     if (reason === 'timeout') {
-      title = "Delay of Game";
-      message = "The shot clock expired. You froze under the pressure of the big moment.";
-      subText = "Turnover on downs.";
+      title = "The Gate Closed";
+      message = "You ran out of time. You're trapped in the Upside Down forever.";
+      subText = "The Mind Flayer found you.";
     } else {
-      title = "Relegated";
-      message = "Your performance was embarrassing. The coach has cut you from the roster.";
-      subText = "Sent down to the minor leagues.";
+      title = "Demogorgon Chow";
+      message = "You failed the party. Friends don't lie, but you just died.";
+      subText = "Hawkins Lab is covering it up.";
     }
   }
 
@@ -97,18 +97,18 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ universe, team, reason,
       
       <div className={`
         relative p-10 md:p-14 w-full text-center rounded-2xl backdrop-blur-2xl
-        border-2 ${universe === 'Star Wars' ? 'border-blue-900/50' : universe === 'Sports' ? 'border-green-900/50' : 'border-red-900/50'}
+        border-2 ${universe === 'Star Wars' ? 'border-blue-900/50' : universe === 'Stranger Things' ? 'border-red-900/50' : 'border-red-900/50'}
         bg-black/80 shadow-[0_0_100px_-20px_rgba(0,0,0,1)] overflow-hidden
       `}>
         
         {/* Background pulses */}
-        <div className={`absolute inset-0 opacity-20 animate-pulse ${universe === 'Sports' ? 'bg-green-950' : universe === 'Star Wars' ? 'bg-blue-950' : 'bg-red-950'}`}></div>
+        <div className={`absolute inset-0 opacity-20 animate-pulse ${universe === 'Stranger Things' ? 'bg-red-950' : universe === 'Star Wars' ? 'bg-blue-950' : 'bg-red-950'}`}></div>
 
         {/* Icon */}
         <div className="relative z-10 mb-8">
             <div className={`
               mx-auto w-24 h-24 rounded-full flex items-center justify-center
-              border-4 ${universe === 'Star Wars' ? 'border-blue-800' : universe === 'Sports' ? 'border-green-800' : 'border-red-900'}
+              border-4 ${universe === 'Star Wars' ? 'border-blue-800' : universe === 'Stranger Things' ? 'border-red-800' : 'border-red-900'}
               bg-black shadow-[0_0_40px_rgba(220,38,38,0.4)]
             `}>
                 {reason === 'timeout' ? (
@@ -119,7 +119,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ universe, team, reason,
             </div>
         </div>
 
-        <h2 className={`relative z-10 text-5xl md:text-6xl font-bold mb-6 ${universe === 'Star Wars' ? 'font-orbitron' : universe === 'Sports' ? 'font-stencil' : 'font-cinzel'} text-red-600 uppercase tracking-widest drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]`}>
+        <h2 className={`relative z-10 text-5xl md:text-6xl font-bold mb-6 ${universe === 'Star Wars' ? 'font-orbitron' : universe === 'Stranger Things' ? 'font-serif' : 'font-cinzel'} text-red-600 uppercase tracking-widest drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]`}>
           {title}
         </h2>
 

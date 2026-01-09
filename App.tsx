@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GameState, Universe, Team, Question } from './types';
-import { POINTS_PER_QUESTION, HG_QUESTIONS, HP_QUESTIONS, MARVEL_QUESTIONS, LOTR_QUESTIONS, SW_QUESTIONS, SPORTS_QUESTIONS, DIFFICULTY_DISTRIBUTION } from './constants';
+import { POINTS_PER_QUESTION, HG_QUESTIONS, HP_QUESTIONS, MARVEL_QUESTIONS, LOTR_QUESTIONS, SW_QUESTIONS, ST_QUESTIONS, DIFFICULTY_DISTRIBUTION } from './constants';
 import UniverseSelection from './components/UniverseSelection';
 import WelcomeScreen from './components/WelcomeScreen';
 import QuizScreen from './components/QuizScreen';
@@ -25,7 +25,7 @@ const generateGameQuestions = (universe: Universe): Question[] => {
   else if (universe === 'Marvel') sourceQuestions = MARVEL_QUESTIONS;
   else if (universe === 'LotR') sourceQuestions = LOTR_QUESTIONS;
   else if (universe === 'Star Wars') sourceQuestions = SW_QUESTIONS;
-  else sourceQuestions = SPORTS_QUESTIONS;
+  else sourceQuestions = ST_QUESTIONS;
   
   const easy = shuffleArray(sourceQuestions.filter(q => q.difficulty === 'Easy')).slice(0, DIFFICULTY_DISTRIBUTION.Easy);
   const medium = shuffleArray(sourceQuestions.filter(q => q.difficulty === 'Medium')).slice(0, DIFFICULTY_DISTRIBUTION.Medium);
@@ -59,8 +59,8 @@ const App: React.FC = () => {
              bgElement.className = 'universe-bg universe-lotr';
         } else if (gameState.universe === 'Star Wars') {
              bgElement.className = 'universe-bg universe-sw';
-        } else if (gameState.universe === 'Sports') {
-             bgElement.className = 'universe-bg universe-sports';
+        } else if (gameState.universe === 'Stranger Things') {
+             bgElement.className = 'universe-bg universe-st';
         } else {
              bgElement.className = 'universe-bg universe-neutral';
         }
@@ -156,7 +156,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col relative z-10">
-      <main className="flex-grow flex flex-col items-center justify-center p-4">
+      <main className="flex-grow flex flex-col items-center justify-start md:justify-center p-4 w-full">
         {gameState.status === 'universe-select' && (
             <UniverseSelection onSelectUniverse={handleSelectUniverse} />
         )}
@@ -205,7 +205,7 @@ const App: React.FC = () => {
       </main>
 
       <footer className="w-full p-4 text-center text-stone-600 text-[10px] md:text-xs border-t border-white/5 bg-black/60 backdrop-blur-md">
-        <p>Unofficial Fan Project - Not affiliated with Warner Bros, J.K. Rowling, Lionsgate, Suzanne Collins, Marvel Studios, the Tolkien Estate, Disney, Lucasfilm, NFL, NBA, or MLB.</p>
+        <p>Unofficial Fan Project - Not affiliated with Warner Bros, J.K. Rowling, Lionsgate, Suzanne Collins, Marvel Studios, the Tolkien Estate, Disney, Lucasfilm, Netflix or the Duffer Brothers.</p>
         <p className="mt-1 font-cinzel text-stone-400">Play responsibly.</p>
       </footer>
     </div>

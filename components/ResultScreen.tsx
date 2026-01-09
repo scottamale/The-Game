@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
-import { Universe, Team, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, SPORTS_THEMES, LeaderboardEntry } from '../types';
-import { Trophy, RefreshCw, Flag, Scroll, Star, Activity, Feather, Sword, Medal, Crown, Save } from 'lucide-react';
+import { Universe, Team, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, ST_THEMES, LeaderboardEntry } from '../types';
+import { Trophy, RefreshCw, Flag, Scroll, Star, Activity, Feather, Sword, Medal, Crown, Save, Radio } from 'lucide-react';
 
 interface ResultScreenProps {
   score: number;
@@ -25,7 +24,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ score, maxScore, totalQuest
   else if (universe === 'Marvel') theme = MARVEL_THEMES[team as keyof typeof MARVEL_THEMES];
   else if (universe === 'LotR') theme = LOTR_THEMES[team as keyof typeof LOTR_THEMES];
   else if (universe === 'Star Wars') theme = SW_THEMES[team as keyof typeof SW_THEMES];
-  else theme = SPORTS_THEMES[team as keyof typeof SPORTS_THEMES];
+  else theme = ST_THEMES[team as keyof typeof ST_THEMES];
 
   const percentage = (score / maxScore) * 100;
   const correctCount = Math.round(score / (maxScore / totalQuestions));
@@ -91,17 +90,17 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ score, maxScore, totalQuest
       title = "Jedi Master";
       message = "Powerful you have become. The Force runs strong in your family. Pass on what you have learned.";
     }
-  } else { // Sports
-    fontClass = "font-stencil";
+  } else { // Stranger Things
+    fontClass = "font-serif text-red-600 font-extrabold";
     if (percentage <= 30) {
-      title = "Benchwarmer";
-      message = "You're cut from the team. Maybe try selling hot dogs in the stands instead?";
+      title = "Mouthbreather";
+      message = "You're stuck in the Upside Down without a map. Watch out for the Demogorgon.";
     } else if (percentage <= 70) {
-      title = "Starter";
-      message = "You make the plays and keep the team in the game, but you're not in the Hall of Fame just yet.";
+      title = "Hawkins Lab Tech";
+      message = "You know the basics of the experiments, but the secrets of the gate elude you.";
     } else {
-      title = "League MVP";
-      message = "Unstoppable! You're breaking records left and right. They'll retire your jersey number.";
+      title = "Dungeon Master";
+      message = "You rolled a nat 20. Your knowledge of Hawkins and the Upside Down is legendary.";
     }
   }
 
@@ -123,8 +122,8 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ score, maxScore, totalQuest
       FooterIcon = Sword;
       footerText = "Archived in the Jedi Temple";
   } else {
-      FooterIcon = Medal;
-      footerText = "Official League Statistics";
+      FooterIcon = Radio;
+      footerText = "Transmitted from Cerebro";
   }
 
   // Leaderboard Logic
@@ -213,7 +212,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ score, maxScore, totalQuest
                 `}
                 >
                 <RefreshCw className="w-5 h-5" />
-                {universe === 'Harry Potter' ? 'Re-Cast' : universe === 'Star Wars' ? 'Re-Launch' : universe === 'Sports' ? 'Rematch' : 'Replay'}
+                {universe === 'Harry Potter' ? 'Re-Cast' : universe === 'Star Wars' ? 'Re-Launch' : universe === 'Stranger Things' ? 'Re-Roll' : 'Replay'}
                 </button>
                 <button
                 onClick={onHome}

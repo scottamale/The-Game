@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Universe, Team, GameState, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, SPORTS_THEMES } from '../types';
+import { Universe, Team, GameState, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, ST_THEMES } from '../types';
 import { TIMER_SECONDS } from '../constants';
-import { Flame, Clock, CheckCircle, XCircle, Wand2, Star, Hexagon, Volume2, VolumeX, Shield, Zap, Circle, Sword, Globe, Trophy, Flag, Activity } from 'lucide-react';
+import { Flame, Clock, CheckCircle, XCircle, Wand2, Star, Hexagon, Volume2, VolumeX, Shield, Zap, Circle, Sword, Globe, Trophy, Flag, Activity, Radio, Skull } from 'lucide-react';
 import { playClick, playCorrect, playWrong, playTimeout, startAmbient, stopAmbient } from '../utils/audio';
 
 interface QuizScreenProps {
@@ -35,7 +35,7 @@ const QuizScreen: React.FC<QuizScreenProps> = ({
   else if (universe === 'Marvel') theme = MARVEL_THEMES[team as keyof typeof MARVEL_THEMES];
   else if (universe === 'LotR') theme = LOTR_THEMES[team as keyof typeof LOTR_THEMES];
   else if (universe === 'Star Wars') theme = SW_THEMES[team as keyof typeof SW_THEMES];
-  else theme = SPORTS_THEMES[team as keyof typeof SPORTS_THEMES];
+  else theme = ST_THEMES[team as keyof typeof ST_THEMES];
 
   // Dynamic Icons and Text
   let MainIcon = Wand2;
@@ -65,10 +65,10 @@ const QuizScreen: React.FC<QuizScreenProps> = ({
     nextButtonText = gameState.currentQuestionIndex === gameState.questions.length - 1 ? "Rule Galaxy" : "Next Sector";
     fontClass = "font-orbitron";
   } else {
-    MainIcon = Trophy;
-    ActionIcon = Flag;
-    nextButtonText = gameState.currentQuestionIndex === gameState.questions.length - 1 ? "Championship" : "Next Quarter";
-    fontClass = "font-stencil tracking-wide";
+    MainIcon = Radio;
+    ActionIcon = Skull;
+    nextButtonText = gameState.currentQuestionIndex === gameState.questions.length - 1 ? "Close Gate" : "Next Chapter";
+    fontClass = "font-serif text-red-100 font-bold tracking-wider";
   }
 
   const currentQuestion = gameState.questions[gameState.currentQuestionIndex];
@@ -158,7 +158,7 @@ const QuizScreen: React.FC<QuizScreenProps> = ({
             <MainIcon className={`${theme.iconColor} w-4 h-4`} />
           </div>
           <span className="text-lg text-stone-200 font-cinzel tracking-widest">
-            {universe === 'Sports' ? 'QUARTER' : universe === 'Star Wars' ? 'SYSTEM' : 'ROUND'} <span className={`${theme.text} font-bold text-xl`}>{gameState.currentQuestionIndex + 1}</span>
+            {universe === 'Stranger Things' ? 'CHAPTER' : universe === 'Star Wars' ? 'SYSTEM' : 'ROUND'} <span className={`${theme.text} font-bold text-xl`}>{gameState.currentQuestionIndex + 1}</span>
             <span className="text-sm text-stone-500 mx-2">/</span>
             <span className="text-sm text-stone-500">{gameState.questions.length}</span>
           </span>

@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
-import { Universe, Team, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, SPORTS_THEMES, Theme, LeaderboardEntry } from '../types';
-import { Target, Flame, Wand2, Shield, Sparkles, Zap, Rocket, Mountain, Sword, Trophy, Ticket, Activity, Crown, X } from 'lucide-react';
+import { Universe, Team, HP_THEMES, HG_THEMES, MARVEL_THEMES, LOTR_THEMES, SW_THEMES, ST_THEMES, Theme, LeaderboardEntry } from '../types';
+import { Target, Flame, Wand2, Shield, Sparkles, Zap, Rocket, Mountain, Sword, Trophy, Ticket, Activity, Crown, X, Star, Ghost, Radio, Skull } from 'lucide-react';
 
 interface WelcomeScreenProps {
   universe: Universe;
@@ -20,7 +19,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
   else if (universe === 'Marvel') themes = MARVEL_THEMES;
   else if (universe === 'LotR') themes = LOTR_THEMES;
   else if (universe === 'Star Wars') themes = SW_THEMES;
-  else themes = SPORTS_THEMES;
+  else themes = ST_THEMES;
   
   // Dynamic Content based on Universe
   let title = "";
@@ -62,12 +61,12 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
     FooterIcon = Sword;
     fontClass = "font-orbitron";
   } else {
-    title = "The Big League";
-    subTitle = "Blood, Sweat, and Glory";
-    selectTitle = "Pick Your League";
-    footerText = "Leave it all on the field";
-    FooterIcon = Trophy;
-    fontClass = "font-stencil tracking-wider";
+    title = "Hawkins, Indiana";
+    subTitle = "Friends Don't Lie";
+    selectTitle = "Choose Your Faction";
+    footerText = "We're Not In Hawkins Anymore";
+    FooterIcon = Radio;
+    fontClass = "font-serif text-red-600 font-extrabold";
   }
 
   // Thematic Classes
@@ -102,10 +101,10 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
     buttonBorderClass = 'border-blue-500/30 hover:border-blue-300/80';
     themeAccentText = 'text-blue-400';
   } else {
-    containerClass = 'glass-panel-sports';
-    titleGradient = 'bg-gradient-to-b from-white via-stone-200 to-stone-400';
-    buttonBorderClass = 'border-white/30 hover:border-white/80';
-    themeAccentText = 'text-white';
+    containerClass = 'glass-panel-st';
+    titleGradient = 'bg-gradient-to-b from-red-500 via-red-600 to-red-900';
+    buttonBorderClass = 'border-red-500/30 hover:border-red-500/80';
+    themeAccentText = 'text-red-500';
   }
 
   const getBackText = () => {
@@ -114,7 +113,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
     if (universe === 'Marvel') return 'Abort Mission';
     if (universe === 'LotR') return 'Return to Shire';
     if (universe === 'Star Wars') return 'Jump to Hyperspace';
-    return 'Back to Locker Room';
+    return 'Exit The Upside Down';
   };
 
   useEffect(() => {
@@ -128,7 +127,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
   }, [showLeaderboard, universe]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] w-full max-w-5xl mx-auto p-6 animate-fade-in relative z-10">
+    <div className="flex flex-col items-center justify-start md:justify-center min-h-[80vh] w-full max-w-5xl mx-auto p-4 md:p-6 animate-fade-in relative z-10">
       
       {/* Top Controls */}
       <div className="absolute top-0 w-full flex justify-between px-6 z-20">
@@ -140,7 +139,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
               universe === 'Marvel' ? 'text-sky-500/60 hover:text-sky-300 hover:drop-shadow-[0_0_5px_rgba(14,165,233,0.8)]' :
               universe === 'LotR' ? 'text-yellow-600/60 hover:text-yellow-400 hover:drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]' :
               universe === 'Star Wars' ? 'text-blue-400/60 hover:text-blue-200 hover:drop-shadow-[0_0_5px_rgba(96,165,250,0.8)]' :
-              'text-white/60 hover:text-white hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]'
+              'text-red-500/60 hover:text-red-400 hover:drop-shadow-[0_0_5px_rgba(220,38,38,0.8)]'
             }
           `}
         >
@@ -157,7 +156,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
         </button>
       </div>
 
-      <div className="text-center mb-16 relative">
+      <div className="text-center mb-8 md:mb-16 mt-12 md:mt-0 relative">
         {/* Decorative elements behind title */}
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-32 blur-3xl opacity-20 -z-10
           ${universe === 'Harry Potter' ? 'bg-blue-600' : 
@@ -165,7 +164,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
             universe === 'Marvel' ? 'bg-sky-600' : 
             universe === 'LotR' ? 'bg-yellow-700' :
             universe === 'Star Wars' ? 'bg-blue-800' :
-            'bg-green-700'
+            'bg-red-800'
           }
         `}></div>
 
@@ -180,7 +179,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
             universe === 'Marvel' ? 'text-sky-200/80' : 
             universe === 'LotR' ? 'text-amber-100/80' :
             universe === 'Star Wars' ? 'text-blue-100/80' :
-            'text-stone-300'
+            'text-red-300'
           }
         `}>
           {universe === 'Harry Potter' && <Sparkles className="w-5 h-5 text-amber-400" />}
@@ -189,21 +188,21 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
         </p>
       </div>
 
-      <div className={`p-8 md:p-12 rounded-xl w-full relative overflow-hidden backdrop-blur-xl transition-all duration-500 ${containerClass}`}>
+      <div className={`p-4 md:p-12 rounded-xl w-full relative overflow-hidden backdrop-blur-xl transition-all duration-500 ${containerClass}`}>
         
-        <h2 className={`text-2xl text-center mb-12 ${fontClass} tracking-[0.2em] uppercase relative inline-block left-1/2 -translate-x-1/2
+        <h2 className={`text-xl md:text-2xl text-center mb-8 md:mb-12 ${fontClass} tracking-[0.2em] uppercase relative inline-block left-1/2 -translate-x-1/2
            ${universe === 'Harry Potter' ? 'text-amber-100 border-b border-amber-500/30 pb-4' : 
              universe === 'Hunger Games' ? 'text-stone-200 border-b border-orange-500/30 pb-4' :
              universe === 'Marvel' ? 'text-sky-100 border-b border-sky-500/30 pb-4' :
              universe === 'LotR' ? 'text-yellow-100 border-b border-yellow-600/30 pb-4' :
              universe === 'Star Wars' ? 'text-blue-100 border-b border-blue-500/30 pb-4' :
-             'text-white border-b border-white/30 pb-4'
+             'text-red-100 border-b border-red-500/30 pb-4'
            }
         `}>
           {selectTitle}
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
           {Object.entries(themes).map(([team, theme]) => {
             // Dynamic Icons based on Universe
             let TeamIcon = Target;
@@ -212,37 +211,42 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
             else if (universe === 'Marvel') TeamIcon = Rocket;
             else if (universe === 'LotR') TeamIcon = Mountain;
             else if (universe === 'Star Wars') TeamIcon = Sword;
-            else TeamIcon = Activity;
+            else if (universe === 'Stranger Things') {
+                if (team === 'The Party') TeamIcon = Radio;
+                else if (team === 'Scoops Ahoy') TeamIcon = Star;
+                else if (team === 'Hellfire Club') TeamIcon = Skull;
+                else TeamIcon = Ghost;
+            }
 
             return (
               <button
                 key={team}
                 onClick={() => onSelectTeam(team as Team)}
                 className={`
-                  group relative p-8 rounded-lg border transition-all duration-500
-                  flex items-center justify-between overflow-hidden
+                  group relative p-4 md:p-8 rounded-lg border transition-all duration-500
+                  flex items-center overflow-hidden text-left
                   bg-gradient-to-br ${theme.gradient}
                   ${buttonBorderClass}
                   hover:scale-[1.02] hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)]
                 `}
               >
-                <div className="flex items-center space-x-6 z-10 relative">
-                  <div className={`p-3 rounded-full border border-white/10 ${universe === 'Harry Potter' ? 'bg-black/30' : 'bg-black/50'}`}>
-                    <TeamIcon className={`w-8 h-8 ${theme.iconColor} group-hover:scale-110 transition-transform duration-700 drop-shadow-md`} />
+                <div className="flex items-center gap-3 md:gap-6 z-10 relative w-full">
+                  <div className={`p-2 md:p-3 rounded-full border border-white/10 shrink-0 ${universe === 'Harry Potter' ? 'bg-black/30' : 'bg-black/50'}`}>
+                    <TeamIcon className={`w-6 h-6 md:w-8 md:h-8 ${theme.iconColor} group-hover:scale-110 transition-transform duration-700 drop-shadow-md`} />
                   </div>
-                  <div className="flex flex-col items-start">
-                    <span className={`text-2xl font-bold ${fontClass} ${theme.text} ${
+                  <div className="flex flex-col items-start min-w-0 flex-1">
+                    <span className={`text-lg md:text-2xl font-bold leading-tight break-words w-full ${fontClass} ${theme.text} ${
                         universe === 'Harry Potter' ? 'text-glow-gold' : 
                         universe === 'Hunger Games' ? 'text-glow-fire' : 
                         universe === 'Marvel' ? 'text-glow-tech' : 
                         universe === 'LotR' ? 'text-glow-ring' :
                         universe === 'Star Wars' ? 'text-glow-neon' :
-                        'text-glow-stadium'
+                        'text-glow-retro'
                     } uppercase tracking-wider`}>
                       {team}
                     </span>
                     <span className="text-[10px] uppercase tracking-widest text-white/40 mt-1 group-hover:text-white/70 transition-colors">
-                      {universe === 'Harry Potter' ? 'Select House' : universe === 'Hunger Games' ? 'Join District' : universe === 'Star Wars' ? 'Choose Side' : 'Select Team'}
+                      {universe === 'Harry Potter' ? 'Select House' : universe === 'Hunger Games' ? 'Join District' : universe === 'Star Wars' ? 'Choose Side' : universe === 'Stranger Things' ? 'Join Group' : 'Select Team'}
                     </span>
                   </div>
                 </div>
@@ -264,7 +268,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
               universe === 'Marvel' ? 'text-sky-300' : 
               universe === 'LotR' ? 'text-yellow-400' :
               universe === 'Star Wars' ? 'text-blue-300' :
-              'text-emerald-200'
+              'text-red-200'
             }
           `}>
             <FooterIcon className={`w-4 h-4 ${
@@ -273,7 +277,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
                 universe === 'Marvel' ? 'text-sky-500' : 
                 universe === 'LotR' ? 'text-yellow-600' :
                 universe === 'Star Wars' ? 'text-blue-500' :
-                'text-white'
+                'text-red-500'
             }`} />
             {footerText}
             <FooterIcon className={`w-4 h-4 ${
@@ -282,7 +286,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
                 universe === 'Marvel' ? 'text-sky-500' : 
                 universe === 'LotR' ? 'text-yellow-600' :
                 universe === 'Star Wars' ? 'text-blue-500' :
-                'text-white'
+                'text-red-500'
             }`} />
           </p>
         </div>

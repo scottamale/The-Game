@@ -139,7 +139,7 @@ export const playGameOver = () => {
   });
 };
 
-export const startAmbient = (universe: 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Sports') => {
+export const startAmbient = (universe: 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Stranger Things') => {
   const ctx = initAudio();
   stopAmbient(); // Clear previous
 
@@ -297,36 +297,42 @@ export const startAmbient = (universe: 'Harry Potter' | 'Hunger Games' | 'Marvel
     osc2.start();
     
     ambientNodes.push(osc1, osc2, gainNode, filter, ambientGain);
-  } else if (universe === 'Sports') {
-    // Sports: Pink noise crowd murmur
-    const bufferSize = 2 * ctx.sampleRate;
-    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-    const data = buffer.getChannelData(0);
-    
-    let lastOut = 0;
-    
-    for (let i = 0; i < bufferSize; i++) {
-        const white = Math.random() * 2 - 1;
-        data[i] = (lastOut + (0.02 * white)) / 1.02;
-        lastOut = data[i];
-        data[i] *= 3.5; 
-    }
-
-    const noise = ctx.createBufferSource();
-    noise.buffer = buffer;
-    noise.loop = true;
-    
+  } else if (universe === 'Stranger Things') {
+    // Stranger Things: Retro Synth Arpeggio Drone
+    const osc1 = ctx.createOscillator();
+    const osc2 = ctx.createOscillator();
     const filter = ctx.createBiquadFilter();
-    filter.type = 'bandpass';
-    filter.frequency.value = 500;
-    filter.Q.value = 0.5;
     
-    noise.connect(filter);
+    // Sawtooth waves are classic synth
+    osc1.type = 'sawtooth';
+    osc1.frequency.value = 55; // A1 (Low)
+    
+    osc2.type = 'sawtooth';
+    osc2.frequency.value = 55.5; // Slightly detuned for "chorus" effect
+    
+    filter.type = 'lowpass';
+    filter.frequency.value = 600;
+    
+    // LFO to open and close filter (slow sweep)
+    const lfo = ctx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 0.5; 
+    
+    const lfoGain = ctx.createGain();
+    lfoGain.gain.value = 200;
+    
+    lfo.connect(lfoGain);
+    lfoGain.connect(filter.frequency);
+    
+    osc1.connect(filter);
+    osc2.connect(filter);
     filter.connect(ambientGain);
     
-    noise.start();
+    osc1.start();
+    osc2.start();
+    lfo.start();
     
-    ambientNodes.push(noise, filter, ambientGain);
+    ambientNodes.push(osc1, osc2, lfo, lfoGain, filter, ambientGain);
   }
 };
 
