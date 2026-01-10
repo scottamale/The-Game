@@ -1217,14 +1217,14 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ universe, team, reason,
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] w-full max-w-2xl mx-auto p-6 animate-scale-in relative z-10">
-      <div className={`relative p-10 md:p-14 w-full text-center rounded-2xl backdrop-blur-2xl border-2 ${universe === 'Star Wars' ? 'border-blue-900/50' : universe === 'Stranger Things' ? 'border-red-900/50' : 'border-red-900/50'} bg-black/80 shadow-[0_0_100px_-20px_rgba(0,0,0,1)] overflow-hidden`}>
+      <div className={`relative p-6 md:p-14 w-full text-center rounded-2xl backdrop-blur-2xl border-2 ${universe === 'Star Wars' ? 'border-blue-900/50' : universe === 'Stranger Things' ? 'border-red-900/50' : 'border-red-900/50'} bg-black/80 shadow-[0_0_100px_-20px_rgba(0,0,0,1)] overflow-hidden`}>
         <div className={`absolute inset-0 opacity-20 animate-pulse ${universe === 'Stranger Things' ? 'bg-red-950' : universe === 'Star Wars' ? 'bg-blue-950' : 'bg-red-950'}`}></div>
         <div className="relative z-10 mb-8">
             <div className={`mx-auto w-24 h-24 rounded-full flex items-center justify-center border-4 ${universe === 'Star Wars' ? 'border-blue-800' : universe === 'Stranger Things' ? 'border-red-800' : 'border-red-900'} bg-black shadow-[0_0_40px_rgba(220,38,38,0.4)]`}>
                 {reason === 'timeout' ? <AlertTriangle className="w-10 h-10 text-red-500 animate-bounce" /> : <Skull className="w-10 h-10 text-stone-400" />}
             </div>
         </div>
-        <h2 className={`relative z-10 text-5xl md:text-6xl font-bold mb-6 ${universe === 'Star Wars' ? 'font-orbitron' : universe === 'Stranger Things' ? 'font-serif' : 'font-cinzel'} text-red-600 uppercase tracking-widest drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]`}>{title}</h2>
+        <h2 className={`relative z-10 text-3xl sm:text-4xl md:text-6xl font-bold mb-6 ${universe === 'Star Wars' ? 'font-orbitron' : universe === 'Stranger Things' ? 'font-serif' : 'font-cinzel'} text-red-600 uppercase tracking-widest drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] break-words leading-tight`}>{title}</h2>
         <p className="relative z-10 text-xl text-stone-300 font-serif mb-4 leading-relaxed">{message}</p>
         <p className="relative z-10 text-sm text-red-400/80 font-mono uppercase tracking-widest mb-12">{subText}</p>
         <div className="relative z-10 flex flex-col md:flex-row gap-4 justify-center">
