@@ -871,6 +871,9 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ universe, team, gameState, onAn
   }, [universe, isMuted]);
   
   useEffect(() => {
+    // Scroll to top on new question
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     if (isAnswerRevealed) return;
     if (timeLeft === 0) {
       if (!isMuted) playTimeout();
@@ -945,20 +948,20 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ universe, team, gameState, onAn
         </div>
       </div>
 
-      <div className={`rounded-2xl p-6 md:p-12 relative overflow-hidden transition-all duration-300 backdrop-blur-xl border ${theme.border}/30 bg-black/40 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]`}>
+      <div className={`rounded-xl p-5 md:p-8 relative overflow-hidden transition-all duration-300 backdrop-blur-xl border ${theme.border}/30 bg-black/40 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]`}>
         <div className={`absolute top-0 left-0 w-20 h-20 bg-gradient-to-br ${theme.gradient} opacity-10 blur-xl`}></div>
         <div className={`absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl ${theme.gradient} opacity-10 blur-xl`}></div>
-        <div className="absolute top-0 right-0 p-6">
+        <div className="absolute top-0 right-0 p-3 md:p-4">
              <span className={`text-[10px] px-3 py-1 rounded-full border tracking-[0.2em] uppercase font-bold backdrop-blur-sm ${currentQuestion.difficulty === 'Easy' ? 'text-emerald-400 border-emerald-500/30 bg-emerald-950/30' : currentQuestion.difficulty === 'Medium' ? 'text-amber-400 border-amber-500/30 bg-amber-950/30' : 'text-red-500 border-red-500/30 bg-red-950/30 animate-pulse'}`}>
             {currentQuestion.difficulty}
           </span>
         </div>
 
-        <h2 className={`text-2xl md:text-3xl text-center mb-12 leading-relaxed text-stone-100 mt-6 drop-shadow-md ${fontClass === 'font-cinzel' ? 'font-serif' : fontClass}`}>
+        <h2 className={`text-xl md:text-2xl text-center mb-6 leading-relaxed text-stone-100 mt-2 drop-shadow-md ${fontClass === 'font-cinzel' ? 'font-serif' : fontClass}`}>
           {currentQuestion.text}
         </h2>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {currentQuestion.options.map((option, idx) => {
             let buttonStyle = `border transition-all duration-300 relative flex items-center justify-between group ${theme.border} border-opacity-20 bg-black/20 hover:border-opacity-80 hover:bg-black/40 hover:pl-6 hover:shadow-[0_0_15px_-5px_currentColor]`;
             let textColor = "text-stone-300 group-hover:text-stone-100";
@@ -978,8 +981,8 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ universe, team, gameState, onAn
             }
 
             return (
-              <button key={idx} disabled={isAnswerRevealed} onClick={() => { if (!isMuted) playClick(); handleOptionClick(idx); }} className={`w-full p-5 rounded-lg text-left ${buttonStyle} ${textColor}`}>
-                <span className={`text-lg tracking-wide ${fontClass === 'font-cinzel' ? 'font-serif' : fontClass}`}>{option}</span>
+              <button key={idx} disabled={isAnswerRevealed} onClick={() => { if (!isMuted) playClick(); handleOptionClick(idx); }} className={`w-full p-3 md:p-4 rounded-lg text-left ${buttonStyle} ${textColor}`}>
+                <span className={`text-base md:text-lg tracking-wide ${fontClass === 'font-cinzel' ? 'font-serif' : fontClass}`}>{option}</span>
                 {icon}
               </button>
             );
