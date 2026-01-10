@@ -1336,7 +1336,16 @@ const App: React.FC = () => {
           <WelcomeScreen universe={gameState.universe} onSelectTeam={handleSelectTeam} onBack={handleHome} />
         )}
         {gameState.status === 'playing' && gameState.universe && gameState.team && gameState.questions.length > 0 && (
-          <QuizScreen universe={gameState.universe} team={gameState.team} gameState={gameState} onAnswer={handleAnswer} onNextQuestion={handleNextQuestion} onGameEnd={handleGameEnd} onGameOver={handleGameOver} />
+          <QuizScreen 
+            key={gameState.currentQuestionIndex}
+            universe={gameState.universe} 
+            team={gameState.team} 
+            gameState={gameState} 
+            onAnswer={handleAnswer} 
+            onNextQuestion={handleNextQuestion} 
+            onGameEnd={handleGameEnd} 
+            onGameOver={handleGameOver} 
+          />
         )}
         {gameState.status === 'result' && gameState.universe && gameState.team && (
           <ResultScreen score={gameState.score} universe={gameState.universe} team={gameState.team} maxScore={gameState.questions.length * POINTS_PER_QUESTION} totalQuestions={gameState.questions.length} onRestart={handleRestart} onHome={handleHome} />
