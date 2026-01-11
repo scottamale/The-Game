@@ -1,6 +1,6 @@
 import React from 'react';
 import { Universe } from '../types';
-import { Wand2, Flame, Zap, Mountain, Sword, Radio } from 'lucide-react';
+import { Wand2, Flame, Zap, Mountain, Sword, Radio, Shield } from 'lucide-react';
 
 interface UniverseSelectionProps {
   onSelectUniverse: (universe: Universe) => void;
@@ -106,6 +106,21 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
             <Radio className="w-10 h-10 text-red-500 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
             <h3 className="text-2xl font-cinzel font-bold text-red-100 mb-2 group-hover:text-red-400 transition-colors">Stranger Things</h3>
             <p className="text-red-200/70 font-serif italic text-sm">Upside Down & Eggos</p>
+          </div>
+        </button>
+
+        {/* The Rookie Card */}
+        <button
+          onClick={() => onSelectUniverse('The Rookie')}
+          className="group relative h-80 rounded-2xl overflow-hidden border-2 border-blue-800 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-rookie"
+        >
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1597022099392-0b299a98e87f?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+          
+          <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
+            <Shield className="w-10 h-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
+            <h3 className="text-2xl font-cinzel font-bold text-blue-100 mb-2 group-hover:text-blue-300 transition-colors">The Rookie</h3>
+            <p className="text-blue-200/70 font-sans italic text-sm">To Protect and to Serve</p>
           </div>
         </button>
       </div>

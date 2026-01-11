@@ -637,7 +637,7 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
         </button>
 
         <button onClick={() => onSelectUniverse('The Rookie')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-blue-800 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-rookie">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1464039397837-272275296c74?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596570769642-e64627402c03?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
             <Shield className="w-10 h-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
