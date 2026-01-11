@@ -6,19 +6,20 @@ import {
   Activity, Crown, X, Star, Ghost, Skull, Clock, 
   CheckCircle, XCircle, Hexagon, Volume2, VolumeX, 
   Circle, Globe, Flag, Scroll, Feather, Medal, Save, 
-  RefreshCw, Home, AlertTriangle 
+  RefreshCw, Home, AlertTriangle, Siren, Car
 } from 'lucide-react';
 
 // --- TYPES ---
 
-type Universe = 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Stranger Things';
+type Universe = 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Stranger Things' | 'The Rookie';
 type HP_House = 'Gryffindor' | 'Slytherin' | 'Ravenclaw' | 'Hufflepuff';
 type HG_Faction = 'District 12' | 'District 2' | 'District 4' | 'The Capitol';
 type Marvel_Faction = 'Avengers' | 'Guardians' | 'Wakanda' | 'Asgard';
 type LotR_Faction = 'The Fellowship' | 'Mordor' | 'Elves of Rivendell' | 'Dwarves of Erebor';
 type SW_Faction = 'Jedi Order' | 'The Sith' | 'Rebel Alliance' | 'Galactic Empire';
 type ST_Faction = 'The Party' | 'Scoops Ahoy' | 'Hellfire Club' | 'Hawkins High';
-type Team = HP_House | HG_Faction | Marvel_Faction | LotR_Faction | SW_Faction | ST_Faction;
+type Rookie_Faction = 'Mid-Wilshire' | 'Detectives' | 'Metro Division' | 'Training Officers';
+type Team = HP_House | HG_Faction | Marvel_Faction | LotR_Faction | SW_Faction | ST_Faction | Rookie_Faction;
 
 interface Theme {
   primary: string;
@@ -99,6 +100,12 @@ const ST_THEMES: Record<ST_Faction, Theme> = {
   'Scoops Ahoy': { primary: 'bg-blue-800', secondary: 'bg-red-500', border: 'border-red-500', text: 'text-white', accent: 'text-red-400', button: 'bg-gradient-to-r from-blue-700 to-blue-600', buttonHover: 'hover:from-blue-600 hover:to-blue-500', gradient: 'from-blue-900 via-white/10 to-red-900', iconColor: 'text-white' },
   'Hellfire Club': { primary: 'bg-black', secondary: 'bg-red-600', border: 'border-red-600', text: 'text-red-500', accent: 'text-white', button: 'bg-gradient-to-r from-red-900 to-black', buttonHover: 'hover:from-red-800 hover:to-stone-900', gradient: 'from-black via-red-950 to-black', iconColor: 'text-red-500' },
   'Hawkins High': { primary: 'bg-green-800', secondary: 'bg-orange-500', border: 'border-orange-500', text: 'text-orange-400', accent: 'text-white', button: 'bg-gradient-to-r from-green-900 to-green-700', buttonHover: 'hover:from-green-800 hover:to-green-600', gradient: 'from-green-950 via-orange-900 to-black', iconColor: 'text-orange-400' }
+};
+const ROOKIE_THEMES: Record<Rookie_Faction, Theme> = {
+  'Mid-Wilshire': { primary: 'bg-slate-900', secondary: 'bg-blue-600', border: 'border-blue-700', text: 'text-blue-100', accent: 'text-yellow-400', button: 'bg-gradient-to-r from-slate-800 to-slate-700', buttonHover: 'hover:from-slate-700 hover:to-slate-600', gradient: 'from-slate-950 via-blue-950 to-black', iconColor: 'text-blue-400' },
+  'Detectives': { primary: 'bg-stone-800', secondary: 'bg-amber-600', border: 'border-stone-600', text: 'text-stone-200', accent: 'text-amber-500', button: 'bg-gradient-to-r from-stone-800 to-stone-700', buttonHover: 'hover:from-stone-700 hover:to-stone-600', gradient: 'from-stone-900 via-stone-800 to-black', iconColor: 'text-amber-500' },
+  'Metro Division': { primary: 'bg-zinc-950', secondary: 'bg-emerald-800', border: 'border-emerald-900', text: 'text-emerald-100', accent: 'text-emerald-500', button: 'bg-gradient-to-r from-zinc-900 to-zinc-800', buttonHover: 'hover:from-zinc-800 hover:to-zinc-700', gradient: 'from-black via-zinc-900 to-emerald-950', iconColor: 'text-emerald-500' },
+  'Training Officers': { primary: 'bg-blue-950', secondary: 'bg-white', border: 'border-blue-500', text: 'text-blue-200', accent: 'text-white', button: 'bg-gradient-to-r from-blue-900 to-blue-800', buttonHover: 'hover:from-blue-800 hover:to-blue-700', gradient: 'from-blue-950 via-slate-900 to-black', iconColor: 'text-white' }
 };
 
 // --- QUESTION DATA ---
@@ -234,6 +241,28 @@ const ST_QUESTIONS: Question[] = [
     { id: 620, text: "What is the heavy metal song Eddie plays in the Upside Down?", options: ["Master of Puppets", "Enter Sandman", "The Trooper", "Run to the Hills"], correctAnswer: 0, difficulty: 'Insane' }
 ];
 
+const ROOKIE_QUESTIONS: Question[] = [
+    { id: 701, text: "What is John Nolan's age when he joins the LAPD?", options: ["35", "40", "45", "38"], correctAnswer: 1, difficulty: 'Easy' },
+    { id: 702, text: "Who is John Nolan's first Training Officer?", options: ["Angela Lopez", "Tim Bradford", "Talia Bishop", "Nyla Harper"], correctAnswer: 2, difficulty: 'Easy' },
+    { id: 703, text: "What is Tim Bradford's rank in Season 1?", options: ["Officer", "Detective", "Sergeant", "Training Officer"], correctAnswer: 3, difficulty: 'Easy' },
+    { id: 704, text: "Who is the Watch Commander of Mid-Wilshire?", options: ["Sgt. Grey", "Capt. Andersen", "Lt. Pine", "Sgt. Bradford"], correctAnswer: 0, difficulty: 'Easy' },
+    { id: 705, text: "Which rookie is the son of a high-ranking LAPD officer?", options: ["John Nolan", "Lucy Chen", "Jackson West", "Aaron Thorsen"], correctAnswer: 2, difficulty: 'Easy' },
+    { id: 706, text: "What is the name of the Captain who is killed in Season 1?", options: ["Captain Moore", "Captain Andersen", "Captain Holt", "Captain Gates"], correctAnswer: 1, difficulty: 'Easy' },
+    
+    { id: 707, text: "What distinctive tattoo does Tim Bradford have?", options: ["A lion", "Semper Fi", "LAPD Shield", "A biohazard symbol"], correctAnswer: 3, difficulty: 'Medium' },
+    { id: 708, text: "Where did John Nolan live when he first moved to LA?", options: ["A motel", "A friend's guest house", "An apartment downtown", "A trailer"], correctAnswer: 1, difficulty: 'Medium' },
+    { id: 709, text: "Who does Detective Lopez marry?", options: ["Wesley Evers", "Tim Bradford", "John Nolan", "Detective Armstrong"], correctAnswer: 0, difficulty: 'Medium' },
+    { id: 710, text: "What was Nyla Harper's job before becoming a TO?", options: ["SWAT", "K9 Unit", "Undercover Detective", "Internal Affairs"], correctAnswer: 2, difficulty: 'Medium' },
+    { id: 711, text: "Who kidnapped Lucy Chen in Season 2?", options: ["Rosalind Dyer", "Caleb Wright", "Nick Armstrong", "La Fiera"], correctAnswer: 1, difficulty: 'Medium' },
+    { id: 712, text: "What is Officer Smitty's first name?", options: ["Steve", "Bill", "Quigley", "Frank"], correctAnswer: 2, difficulty: 'Medium' },
+    
+    { id: 713, text: "What is the call sign usually associated with Tim Bradford's shop?", options: ["7-Adam-100", "7-Adam-19", "7-Lincoln-30", "1-X-Ray-12"], correctAnswer: 1, difficulty: 'Insane' },
+    { id: 714, text: "Who killed Jackson West?", options: ["La Fiera's men", "Sandra de la Cruz's men", "Oscar Hutchinson", "Elijah Stone"], correctAnswer: 1, difficulty: 'Insane' },
+    { id: 715, text: "What is the name of Tim Bradford's dog?", options: ["Kojo", "Rex", "Spot", "Duke"], correctAnswer: 0, difficulty: 'Insane' },
+    { id: 716, text: "What city is Bailey Nune a firefighter for?", options: ["Los Angeles", "Santa Monica", "Beverly Hills", "Pasadena"], correctAnswer: 0, difficulty: 'Insane' },
+    { id: 717, text: "Which character was revealed to be a dirty cop working for the mob?", options: ["Nick Armstrong", "Doug Stanton", "Jeremy Hawke", "Ruben Derian"], correctAnswer: 0, difficulty: 'Insane' }
+];
+
 // --- AUDIO UTILS ---
 
 let audioCtx: AudioContext | null = null;
@@ -344,7 +373,7 @@ const playGameOver = () => {
   });
 };
 
-const startAmbient = (universe: 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Stranger Things') => {
+const startAmbient = (universe: 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'LotR' | 'Star Wars' | 'Stranger Things' | 'The Rookie') => {
   const ctx = initAudio();
   stopAmbient(); 
 
@@ -479,6 +508,38 @@ const startAmbient = (universe: 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'Lo
     osc2.start();
     lfo.start();
     ambientNodes.push(osc1, osc2, lfo, lfoGain, filter, ambientGain);
+  } else if (universe === 'The Rookie') {
+    // City Ambience + Distant Sirens
+    const osc1 = ctx.createOscillator(); // Siren
+    const osc2 = ctx.createOscillator(); // Siren modulation
+    const gain1 = ctx.createGain();
+    const filter = ctx.createBiquadFilter();
+
+    // Siren
+    osc1.type = 'triangle';
+    osc1.frequency.value = 600;
+    
+    // LFO for siren pitch
+    osc2.type = 'sawtooth';
+    osc2.frequency.value = 0.2; // slow rise and fall
+    const lfoGain = ctx.createGain();
+    lfoGain.gain.value = 400; // Pitch range
+    
+    osc2.connect(lfoGain);
+    lfoGain.connect(osc1.frequency);
+    
+    gain1.gain.value = 0.2; // Quiet distant siren
+    
+    filter.type = 'lowpass';
+    filter.frequency.value = 800; // Muffled distance
+    
+    osc1.connect(filter);
+    filter.connect(gain1);
+    gain1.connect(ambientGain);
+    
+    osc1.start();
+    osc2.start();
+    ambientNodes.push(osc1, osc2, lfoGain, gain1, filter, ambientGain);
   }
 };
 
@@ -574,6 +635,16 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
             <p className="text-red-200/70 font-serif italic text-sm">Upside Down & Eggos</p>
           </div>
         </button>
+
+        <button onClick={() => onSelectUniverse('The Rookie')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-blue-800 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-rookie">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1464039397837-272275296c74?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
+            <Shield className="w-10 h-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
+            <h3 className="text-2xl font-cinzel font-bold text-blue-100 mb-2 group-hover:text-blue-300 transition-colors">The Rookie</h3>
+            <p className="text-blue-200/70 font-sans italic text-sm">To Protect and to Serve</p>
+          </div>
+        </button>
       </div>
     </div>
   );
@@ -595,6 +666,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
   else if (universe === 'Marvel') themes = MARVEL_THEMES;
   else if (universe === 'LotR') themes = LOTR_THEMES;
   else if (universe === 'Star Wars') themes = SW_THEMES;
+  else if (universe === 'The Rookie') themes = ROOKIE_THEMES;
   else themes = ST_THEMES;
   
   let title = "";
@@ -635,6 +707,13 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
     footerText = "May the Force be with you";
     FooterIcon = Sword;
     fontClass = "font-orbitron";
+  } else if (universe === 'The Rookie') {
+    title = "Mid-Wilshire Patrol";
+    subTitle = "To Protect and to Serve";
+    selectTitle = "Assign Your Unit";
+    footerText = "7-Adam-100, show us Code 4";
+    FooterIcon = Shield;
+    fontClass = "font-sans font-bold tracking-tight";
   } else {
     title = "Hawkins, Indiana";
     subTitle = "Friends Don't Lie";
@@ -674,6 +753,11 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
     titleGradient = 'bg-gradient-to-b from-blue-100 via-blue-400 to-violet-600';
     buttonBorderClass = 'border-blue-500/30 hover:border-blue-300/80';
     themeAccentText = 'text-blue-400';
+  } else if (universe === 'The Rookie') {
+    containerClass = 'glass-panel-rookie';
+    titleGradient = 'bg-gradient-to-b from-blue-200 via-blue-500 to-blue-900';
+    buttonBorderClass = 'border-blue-500/30 hover:border-blue-300/80';
+    themeAccentText = 'text-blue-400';
   } else {
     containerClass = 'glass-panel-st';
     titleGradient = 'bg-gradient-to-b from-red-500 via-red-600 to-red-900';
@@ -687,6 +771,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
     if (universe === 'Marvel') return 'Abort Mission';
     if (universe === 'LotR') return 'Return to Shire';
     if (universe === 'Star Wars') return 'Jump to Hyperspace';
+    if (universe === 'The Rookie') return 'Return to Station';
     return 'Exit The Upside Down';
   };
 
@@ -703,7 +788,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
   return (
     <div className="flex flex-col items-center justify-start md:justify-center min-h-[80vh] w-full max-w-5xl mx-auto p-4 md:p-6 animate-fade-in relative z-10">
       <div className="absolute top-0 w-full flex justify-between px-6 z-20">
-        <button onClick={onBack} className={`uppercase text-xs tracking-[0.2em] font-cinzel transition-all duration-300 flex items-center gap-2 ${universe === 'Harry Potter' ? 'text-amber-200/60 hover:text-amber-100 hover:drop-shadow-[0_0_5px_rgba(251,191,36,0.8)]' : universe === 'Hunger Games' ? 'text-stone-500 hover:text-orange-500 hover:drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]' : universe === 'Marvel' ? 'text-sky-500/60 hover:text-sky-300 hover:drop-shadow-[0_0_5px_rgba(14,165,233,0.8)]' : universe === 'LotR' ? 'text-yellow-600/60 hover:text-yellow-400 hover:drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]' : universe === 'Star Wars' ? 'text-blue-400/60 hover:text-blue-200 hover:drop-shadow-[0_0_5px_rgba(96,165,250,0.8)]' : 'text-red-500/60 hover:text-red-400 hover:drop-shadow-[0_0_5px_rgba(220,38,38,0.8)]'}`}>
+        <button onClick={onBack} className={`uppercase text-xs tracking-[0.2em] font-cinzel transition-all duration-300 flex items-center gap-2 ${universe === 'Harry Potter' ? 'text-amber-200/60 hover:text-amber-100 hover:drop-shadow-[0_0_5px_rgba(251,191,36,0.8)]' : universe === 'Hunger Games' ? 'text-stone-500 hover:text-orange-500 hover:drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]' : universe === 'Marvel' ? 'text-sky-500/60 hover:text-sky-300 hover:drop-shadow-[0_0_5px_rgba(14,165,233,0.8)]' : universe === 'LotR' ? 'text-yellow-600/60 hover:text-yellow-400 hover:drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]' : universe === 'Star Wars' ? 'text-blue-400/60 hover:text-blue-200 hover:drop-shadow-[0_0_5px_rgba(96,165,250,0.8)]' : universe === 'The Rookie' ? 'text-blue-300/60 hover:text-blue-100 hover:drop-shadow-[0_0_5px_rgba(96,165,250,0.8)]' : 'text-red-500/60 hover:text-red-400 hover:drop-shadow-[0_0_5px_rgba(220,38,38,0.8)]'}`}>
           <span>←</span> {getBackText()}
         </button>
         <button onClick={() => setShowLeaderboard(true)} className={`uppercase text-xs tracking-[0.2em] font-cinzel transition-all duration-300 flex items-center gap-2 ${themeAccentText} opacity-70 hover:opacity-100 hover:scale-105`}>
@@ -712,9 +797,9 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
       </div>
 
       <div className="text-center mb-8 md:mb-16 mt-12 md:mt-0 relative">
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-32 blur-3xl opacity-20 -z-10 ${universe === 'Harry Potter' ? 'bg-blue-600' : universe === 'Hunger Games' ? 'bg-red-900' : universe === 'Marvel' ? 'bg-sky-600' : universe === 'LotR' ? 'bg-yellow-700' : universe === 'Star Wars' ? 'bg-blue-800' : 'bg-red-800'}`}></div>
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-32 blur-3xl opacity-20 -z-10 ${universe === 'Harry Potter' ? 'bg-blue-600' : universe === 'Hunger Games' ? 'bg-red-900' : universe === 'Marvel' ? 'bg-sky-600' : universe === 'LotR' ? 'bg-yellow-700' : universe === 'Star Wars' ? 'bg-blue-800' : universe === 'The Rookie' ? 'bg-blue-900' : 'bg-red-800'}`}></div>
         <h1 className={`text-5xl md:text-7xl font-bold mb-4 text-transparent bg-clip-text drop-shadow-lg ${fontClass} tracking-widest uppercase ${titleGradient}`}>{title}</h1>
-        <p className={`text-xl md:text-2xl italic font-serif flex items-center justify-center gap-3 ${universe === 'Harry Potter' ? 'text-blue-200/80' : universe === 'Hunger Games' ? 'text-stone-400' : universe === 'Marvel' ? 'text-sky-200/80' : universe === 'LotR' ? 'text-amber-100/80' : universe === 'Star Wars' ? 'text-blue-100/80' : 'text-red-300'}`}>
+        <p className={`text-xl md:text-2xl italic font-serif flex items-center justify-center gap-3 ${universe === 'Harry Potter' ? 'text-blue-200/80' : universe === 'Hunger Games' ? 'text-stone-400' : universe === 'Marvel' ? 'text-sky-200/80' : universe === 'LotR' ? 'text-amber-100/80' : universe === 'Star Wars' ? 'text-blue-100/80' : universe === 'The Rookie' ? 'text-blue-100/80' : 'text-red-300'}`}>
           {universe === 'Harry Potter' && <Sparkles className="w-5 h-5 text-amber-400" />}
           "{subTitle}"
           {universe === 'Harry Potter' && <Sparkles className="w-5 h-5 text-amber-400" />}
@@ -722,7 +807,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
       </div>
 
       <div className={`p-4 md:p-12 rounded-xl w-full relative overflow-hidden backdrop-blur-xl transition-all duration-500 ${containerClass}`}>
-        <h2 className={`text-xl md:text-2xl text-center mb-8 md:mb-12 ${fontClass} tracking-[0.2em] uppercase relative inline-block left-1/2 -translate-x-1/2 ${universe === 'Harry Potter' ? 'text-amber-100 border-b border-amber-500/30 pb-4' : universe === 'Hunger Games' ? 'text-stone-200 border-b border-orange-500/30 pb-4' : universe === 'Marvel' ? 'text-sky-100 border-b border-sky-500/30 pb-4' : universe === 'LotR' ? 'text-yellow-100 border-b border-yellow-600/30 pb-4' : universe === 'Star Wars' ? 'text-blue-100 border-b border-blue-500/30 pb-4' : 'text-red-100 border-b border-red-500/30 pb-4'}`}>{selectTitle}</h2>
+        <h2 className={`text-xl md:text-2xl text-center mb-8 md:mb-12 ${fontClass} tracking-[0.2em] uppercase relative inline-block left-1/2 -translate-x-1/2 ${universe === 'Harry Potter' ? 'text-amber-100 border-b border-amber-500/30 pb-4' : universe === 'Hunger Games' ? 'text-stone-200 border-b border-orange-500/30 pb-4' : universe === 'Marvel' ? 'text-sky-100 border-b border-sky-500/30 pb-4' : universe === 'LotR' ? 'text-yellow-100 border-b border-yellow-600/30 pb-4' : universe === 'Star Wars' ? 'text-blue-100 border-b border-blue-500/30 pb-4' : universe === 'The Rookie' ? 'text-blue-50 border-b border-blue-500/30 pb-4' : 'text-red-100 border-b border-red-500/30 pb-4'}`}>{selectTitle}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
           {Object.entries(themes).map(([team, theme]) => {
@@ -732,6 +817,12 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
             else if (universe === 'Marvel') TeamIcon = Rocket;
             else if (universe === 'LotR') TeamIcon = Mountain;
             else if (universe === 'Star Wars') TeamIcon = Sword;
+            else if (universe === 'The Rookie') {
+                if (team === 'Mid-Wilshire') TeamIcon = Shield;
+                else if (team === 'Detectives') TeamIcon = Activity;
+                else if (team === 'Metro Division') TeamIcon = Target;
+                else TeamIcon = Star;
+            }
             else if (universe === 'Stranger Things') {
                 if (team === 'The Party') TeamIcon = Radio;
                 else if (team === 'Scoops Ahoy') TeamIcon = Star;
@@ -746,8 +837,8 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
                     <TeamIcon className={`w-6 h-6 md:w-8 md:h-8 ${theme.iconColor} group-hover:scale-110 transition-transform duration-700 drop-shadow-md`} />
                   </div>
                   <div className="flex flex-col items-start min-w-0 flex-1">
-                    <span className={`text-lg md:text-2xl font-bold leading-tight break-words w-full ${fontClass} ${theme.text} ${universe === 'Harry Potter' ? 'text-glow-gold' : universe === 'Hunger Games' ? 'text-glow-fire' : universe === 'Marvel' ? 'text-glow-tech' : universe === 'LotR' ? 'text-glow-ring' : universe === 'Star Wars' ? 'text-glow-neon' : 'text-glow-retro'} uppercase tracking-wider`}>{team}</span>
-                    <span className="text-[10px] uppercase tracking-widest text-white/40 mt-1 group-hover:text-white/70 transition-colors">{universe === 'Harry Potter' ? 'Select House' : universe === 'Hunger Games' ? 'Join District' : universe === 'Star Wars' ? 'Choose Side' : universe === 'Stranger Things' ? 'Join Group' : 'Select Team'}</span>
+                    <span className={`text-lg md:text-2xl font-bold leading-tight break-words w-full ${fontClass} ${theme.text} ${universe === 'Harry Potter' ? 'text-glow-gold' : universe === 'Hunger Games' ? 'text-glow-fire' : universe === 'Marvel' ? 'text-glow-tech' : universe === 'LotR' ? 'text-glow-ring' : universe === 'Star Wars' ? 'text-glow-neon' : universe === 'The Rookie' ? 'text-glow-tech' : 'text-glow-retro'} uppercase tracking-wider`}>{team}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-white/40 mt-1 group-hover:text-white/70 transition-colors">{universe === 'Harry Potter' ? 'Select House' : universe === 'Hunger Games' ? 'Join District' : universe === 'Star Wars' ? 'Choose Side' : universe === 'The Rookie' ? 'Select Unit' : universe === 'Stranger Things' ? 'Join Group' : 'Select Team'}</span>
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
@@ -758,10 +849,10 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ universe, onSelectTeam, o
         </div>
         
         <div className="mt-16 text-center">
-          <p className={`text-sm flex items-center justify-center gap-3 uppercase tracking-[0.2em] font-cinzel opacity-70 ${universe === 'Harry Potter' ? 'text-amber-200' : universe === 'Hunger Games' ? 'text-stone-500' : universe === 'Marvel' ? 'text-sky-300' : universe === 'LotR' ? 'text-yellow-400' : universe === 'Star Wars' ? 'text-blue-300' : 'text-red-200'}`}>
-            <FooterIcon className={`w-4 h-4 ${universe === 'Harry Potter' ? 'text-amber-400' : universe === 'Hunger Games' ? 'text-orange-600' : universe === 'Marvel' ? 'text-sky-500' : universe === 'LotR' ? 'text-yellow-600' : universe === 'Star Wars' ? 'text-blue-500' : 'text-red-500'}`} />
+          <p className={`text-sm flex items-center justify-center gap-3 uppercase tracking-[0.2em] font-cinzel opacity-70 ${universe === 'Harry Potter' ? 'text-amber-200' : universe === 'Hunger Games' ? 'text-stone-500' : universe === 'Marvel' ? 'text-sky-300' : universe === 'LotR' ? 'text-yellow-400' : universe === 'Star Wars' ? 'text-blue-300' : universe === 'The Rookie' ? 'text-blue-200' : 'text-red-200'}`}>
+            <FooterIcon className={`w-4 h-4 ${universe === 'Harry Potter' ? 'text-amber-400' : universe === 'Hunger Games' ? 'text-orange-600' : universe === 'Marvel' ? 'text-sky-500' : universe === 'LotR' ? 'text-yellow-600' : universe === 'Star Wars' ? 'text-blue-500' : universe === 'The Rookie' ? 'text-blue-400' : 'text-red-500'}`} />
             {footerText}
-            <FooterIcon className={`w-4 h-4 ${universe === 'Harry Potter' ? 'text-amber-400' : universe === 'Hunger Games' ? 'text-orange-600' : universe === 'Marvel' ? 'text-sky-500' : universe === 'LotR' ? 'text-yellow-600' : universe === 'Star Wars' ? 'text-blue-500' : 'text-red-500'}`} />
+            <FooterIcon className={`w-4 h-4 ${universe === 'Harry Potter' ? 'text-amber-400' : universe === 'Hunger Games' ? 'text-orange-600' : universe === 'Marvel' ? 'text-sky-500' : universe === 'LotR' ? 'text-yellow-600' : universe === 'Star Wars' ? 'text-blue-500' : universe === 'The Rookie' ? 'text-blue-400' : 'text-red-500'}`} />
           </p>
         </div>
       </div>
@@ -822,6 +913,7 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ universe, team, gameState, onAn
   else if (universe === 'Marvel') theme = MARVEL_THEMES[team as keyof typeof MARVEL_THEMES];
   else if (universe === 'LotR') theme = LOTR_THEMES[team as keyof typeof LOTR_THEMES];
   else if (universe === 'Star Wars') theme = SW_THEMES[team as keyof typeof SW_THEMES];
+  else if (universe === 'The Rookie') theme = ROOKIE_THEMES[team as keyof typeof ROOKIE_THEMES];
   else theme = ST_THEMES[team as keyof typeof ST_THEMES];
 
   let MainIcon = Wand2;
@@ -850,6 +942,11 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ universe, team, gameState, onAn
     ActionIcon = Globe;
     nextButtonText = gameState.currentQuestionIndex === gameState.questions.length - 1 ? "Rule Galaxy" : "Next Sector";
     fontClass = "font-orbitron";
+  } else if (universe === 'The Rookie') {
+    MainIcon = Shield;
+    ActionIcon = Flag;
+    nextButtonText = gameState.currentQuestionIndex === gameState.questions.length - 1 ? "End Shift" : "Next Call";
+    fontClass = "font-sans font-bold";
   } else {
     MainIcon = Radio;
     ActionIcon = Skull;
@@ -925,7 +1022,7 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ universe, team, gameState, onAn
             <MainIcon className={`${theme.iconColor} w-4 h-4`} />
           </div>
           <span className="text-lg text-stone-200 font-cinzel tracking-widest">
-            {universe === 'Stranger Things' ? 'CHAPTER' : universe === 'Star Wars' ? 'SYSTEM' : 'ROUND'} <span className={`${theme.text} font-bold text-xl`}>{gameState.currentQuestionIndex + 1}</span>
+            {universe === 'Stranger Things' ? 'CHAPTER' : universe === 'Star Wars' ? 'SYSTEM' : universe === 'The Rookie' ? 'CALL' : 'ROUND'} <span className={`${theme.text} font-bold text-xl`}>{gameState.currentQuestionIndex + 1}</span>
             <span className="text-sm text-stone-500 mx-2">/</span>
             <span className="text-sm text-stone-500">{gameState.questions.length}</span>
           </span>
@@ -1023,6 +1120,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ score, maxScore, totalQuest
   else if (universe === 'Marvel') theme = MARVEL_THEMES[team as keyof typeof MARVEL_THEMES];
   else if (universe === 'LotR') theme = LOTR_THEMES[team as keyof typeof LOTR_THEMES];
   else if (universe === 'Star Wars') theme = SW_THEMES[team as keyof typeof SW_THEMES];
+  else if (universe === 'The Rookie') theme = ROOKIE_THEMES[team as keyof typeof ROOKIE_THEMES];
   else theme = ST_THEMES[team as keyof typeof ST_THEMES];
 
   const percentage = (score / maxScore) * 100;
@@ -1052,6 +1150,11 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ score, maxScore, totalQuest
     if (percentage <= 30) { title = "Bantha Fodder"; message = "The Force is not strong with this one. You're likely to be eaten by a Wampa."; } 
     else if (percentage <= 70) { title = "Padawan Learner"; message = "You have taken your first steps into a larger world, but you are not a Jedi yet."; } 
     else { title = "Jedi Master"; message = "Powerful you have become. The Force runs strong in your family. Pass on what you have learned."; }
+  } else if (universe === 'The Rookie') {
+    fontClass = "font-sans font-bold";
+    if (percentage <= 30) { title = "Academy Washout"; message = "You didn't make it past the first week. Hand in your badge and gun."; } 
+    else if (percentage <= 70) { title = "Rookie (P1)"; message = "You're getting there, Boot. Keep your head down and listen to your TO."; } 
+    else { title = "Watch Commander"; message = "Excellent work. You run the station with precision and respect. 7-Adam-100 is clear."; }
   } else { 
     fontClass = "font-serif text-red-600 font-extrabold";
     if (percentage <= 30) { title = "Mouthbreather"; message = "You're stuck in the Upside Down without a map. Watch out for the Demogorgon."; } 
@@ -1066,6 +1169,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ score, maxScore, totalQuest
   else if (universe === 'Marvel') { FooterIcon = Activity; footerText = "S.H.I.E.L.D. Personnel File Updated"; } 
   else if (universe === 'LotR') { FooterIcon = Feather; footerText = "Recorded in the Red Book of Westmarch"; } 
   else if (universe === 'Star Wars') { FooterIcon = Sword; footerText = "Archived in the Jedi Temple"; } 
+  else if (universe === 'The Rookie') { FooterIcon = Shield; footerText = "Report filed with Internal Affairs"; }
   else { FooterIcon = Radio; footerText = "Transmitted from Cerebro"; }
 
   useEffect(() => {
@@ -1111,7 +1215,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ score, maxScore, totalQuest
             <div className="flex flex-col gap-4 w-full">
                 <button onClick={onRestart} className={`flex items-center justify-center gap-3 px-6 py-3 rounded-sm text-base font-bold transition-all font-cinzel uppercase tracking-widest border border-white/10 shadow-lg w-full ${theme.button} ${theme.buttonHover} text-white hover:shadow-[0_0_30px_-5px_currentColor] hover:-translate-y-1`}>
                 <RefreshCw className="w-5 h-5" />
-                {universe === 'Harry Potter' ? 'Re-Cast' : universe === 'Star Wars' ? 'Re-Launch' : universe === 'Stranger Things' ? 'Re-Roll' : 'Replay'}
+                {universe === 'Harry Potter' ? 'Re-Cast' : universe === 'Star Wars' ? 'Re-Launch' : universe === 'Stranger Things' ? 'Re-Roll' : universe === 'The Rookie' ? 'Re-Assign' : 'Replay'}
                 </button>
                 <button onClick={onHome} className={`flex items-center justify-center gap-3 px-6 py-3 rounded-sm text-base font-bold transition-all font-cinzel uppercase tracking-widest border border-white/5 bg-black/60 hover:bg-black/80 text-stone-400 hover:text-white hover:border-white/20 w-full`}>
                 <Star className="w-4 h-4" />
@@ -1185,6 +1289,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ universe, team, reason,
   else if (universe === 'Marvel') theme = MARVEL_THEMES[team as keyof typeof MARVEL_THEMES];
   else if (universe === 'LotR') theme = LOTR_THEMES[team as keyof typeof LOTR_THEMES];
   else if (universe === 'Star Wars') theme = SW_THEMES[team as keyof typeof SW_THEMES];
+  else if (universe === 'The Rookie') theme = ROOKIE_THEMES[team as keyof typeof ROOKIE_THEMES];
   else theme = ST_THEMES[team as keyof typeof ST_THEMES];
 
   useEffect(() => {
@@ -1210,6 +1315,9 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ universe, team, reason,
   } else if (universe === 'Star Wars') {
     if (reason === 'timeout') { title = "Frozen in Carbonite"; message = "You were too slow. Jabba the Hutt has added you to his wall art collection."; subText = "You should have paid him back."; } 
     else { title = "Turned to the Dark Side"; message = "Your failure has led to anger, fear, and aggression. The Emperor is pleased."; subText = "Order 66 executed."; }
+  } else if (universe === 'The Rookie') {
+    if (reason === 'timeout') { title = "Officer Down"; message = "You hesitated in the line of fire. Backup didn't arrive in time."; subText = "End of Watch."; } 
+    else { title = "Blue Page"; message = "Too many mistakes. The Sergeant has pulled your file."; subText = "You've been washed out of the program."; }
   } else {
     if (reason === 'timeout') { title = "The Gate Closed"; message = "You ran out of time. You're trapped in the Upside Down forever."; subText = "The Mind Flayer found you."; } 
     else { title = "Demogorgon Chow"; message = "You failed the party. Friends don't lie, but you just died."; subText = "Hawkins Lab is covering it up."; }
@@ -1217,18 +1325,18 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ universe, team, reason,
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] w-full max-w-2xl mx-auto p-6 animate-scale-in relative z-10">
-      <div className={`relative p-6 md:p-14 w-full text-center rounded-2xl backdrop-blur-2xl border-2 ${universe === 'Star Wars' ? 'border-blue-900/50' : universe === 'Stranger Things' ? 'border-red-900/50' : 'border-red-900/50'} bg-black/80 shadow-[0_0_100px_-20px_rgba(0,0,0,1)] overflow-hidden`}>
-        <div className={`absolute inset-0 opacity-20 animate-pulse ${universe === 'Stranger Things' ? 'bg-red-950' : universe === 'Star Wars' ? 'bg-blue-950' : 'bg-red-950'}`}></div>
+      <div className={`relative p-6 md:p-14 w-full text-center rounded-2xl backdrop-blur-2xl border-2 ${universe === 'Star Wars' ? 'border-blue-900/50' : universe === 'Stranger Things' ? 'border-red-900/50' : universe === 'The Rookie' ? 'border-blue-800/50' : 'border-red-900/50'} bg-black/80 shadow-[0_0_100px_-20px_rgba(0,0,0,1)] overflow-hidden`}>
+        <div className={`absolute inset-0 opacity-20 animate-pulse ${universe === 'Stranger Things' ? 'bg-red-950' : universe === 'Star Wars' ? 'bg-blue-950' : universe === 'The Rookie' ? 'bg-blue-900' : 'bg-red-950'}`}></div>
         <div className="relative z-10 mb-8">
-            <div className={`mx-auto w-24 h-24 rounded-full flex items-center justify-center border-4 ${universe === 'Star Wars' ? 'border-blue-800' : universe === 'Stranger Things' ? 'border-red-800' : 'border-red-900'} bg-black shadow-[0_0_40px_rgba(220,38,38,0.4)]`}>
+            <div className={`mx-auto w-24 h-24 rounded-full flex items-center justify-center border-4 ${universe === 'Star Wars' ? 'border-blue-800' : universe === 'Stranger Things' ? 'border-red-800' : universe === 'The Rookie' ? 'border-blue-600' : 'border-red-900'} bg-black shadow-[0_0_40px_rgba(220,38,38,0.4)]`}>
                 {reason === 'timeout' ? <AlertTriangle className="w-10 h-10 text-red-500 animate-bounce" /> : <Skull className="w-10 h-10 text-stone-400" />}
             </div>
         </div>
-        <h2 className={`relative z-10 text-3xl sm:text-4xl md:text-6xl font-bold mb-6 ${universe === 'Star Wars' ? 'font-orbitron' : universe === 'Stranger Things' ? 'font-serif' : 'font-cinzel'} text-red-600 uppercase tracking-widest drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] break-words leading-tight`}>{title}</h2>
+        <h2 className={`relative z-10 text-3xl sm:text-4xl md:text-6xl font-bold mb-6 ${universe === 'Star Wars' ? 'font-orbitron' : universe === 'Stranger Things' ? 'font-serif' : universe === 'The Rookie' ? 'font-sans font-black' : 'font-cinzel'} ${universe === 'The Rookie' ? 'text-blue-500' : 'text-red-600'} uppercase tracking-widest drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] break-words leading-tight`}>{title}</h2>
         <p className="relative z-10 text-xl text-stone-300 font-serif mb-4 leading-relaxed">{message}</p>
-        <p className="relative z-10 text-sm text-red-400/80 font-mono uppercase tracking-widest mb-12">{subText}</p>
+        <p className={`relative z-10 text-sm ${universe === 'The Rookie' ? 'text-blue-400/80' : 'text-red-400/80'} font-mono uppercase tracking-widest mb-12`}>{subText}</p>
         <div className="relative z-10 flex flex-col md:flex-row gap-4 justify-center">
-          <button onClick={onRestart} className={`flex items-center justify-center gap-3 px-8 py-4 rounded-sm text-lg font-bold transition-all font-cinzel uppercase tracking-widest border border-white/10 shadow-lg bg-red-900/80 hover:bg-red-800 text-white hover:shadow-[0_0_30px_-5px_rgba(220,38,38,0.6)] hover:-translate-y-1`}>
+          <button onClick={onRestart} className={`flex items-center justify-center gap-3 px-8 py-4 rounded-sm text-lg font-bold transition-all font-cinzel uppercase tracking-widest border border-white/10 shadow-lg ${universe === 'The Rookie' ? 'bg-blue-900/80 hover:bg-blue-800 hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)]' : 'bg-red-900/80 hover:bg-red-800 hover:shadow-[0_0_30px_-5px_rgba(220,38,38,0.6)]'} text-white hover:-translate-y-1`}>
             <RefreshCw className="w-5 h-5" /> Try Again
           </button>
           <button onClick={onHome} className={`flex items-center justify-center gap-3 px-8 py-4 rounded-sm text-lg font-bold transition-all font-cinzel uppercase tracking-widest border border-white/5 bg-black/60 hover:bg-black/80 text-stone-400 hover:text-white hover:border-white/20`}>
@@ -1258,6 +1366,7 @@ const generateGameQuestions = (universe: Universe): Question[] => {
   else if (universe === 'Marvel') sourceQuestions = MARVEL_QUESTIONS;
   else if (universe === 'LotR') sourceQuestions = LOTR_QUESTIONS;
   else if (universe === 'Star Wars') sourceQuestions = SW_QUESTIONS;
+  else if (universe === 'The Rookie') sourceQuestions = ROOKIE_QUESTIONS;
   else sourceQuestions = ST_QUESTIONS;
   
   const easy = shuffleArray(sourceQuestions.filter(q => q.difficulty === 'Easy')).slice(0, DIFFICULTY_DISTRIBUTION.Easy);
@@ -1287,6 +1396,7 @@ const App: React.FC = () => {
         else if (gameState.universe === 'LotR') { bgElement.className = 'universe-bg universe-lotr'; } 
         else if (gameState.universe === 'Star Wars') { bgElement.className = 'universe-bg universe-sw'; } 
         else if (gameState.universe === 'Stranger Things') { bgElement.className = 'universe-bg universe-st'; } 
+        else if (gameState.universe === 'The Rookie') { bgElement.className = 'universe-bg universe-rookie'; } 
         else { bgElement.className = 'universe-bg universe-neutral'; }
     }
   }, [gameState.universe]);
@@ -1358,7 +1468,7 @@ const App: React.FC = () => {
         )}
       </main>
       <footer className="w-full p-4 text-center text-stone-600 text-[10px] md:text-xs border-t border-white/5 bg-black/60 backdrop-blur-md">
-        <p>Unofficial Fan Project - Not affiliated with Warner Bros, J.K. Rowling, Lionsgate, Suzanne Collins, Marvel Studios, the Tolkien Estate, Disney, Lucasfilm, Netflix or the Duffer Brothers.</p>
+        <p>Unofficial Fan Project - Not affiliated with Warner Bros, J.K. Rowling, Lionsgate, Suzanne Collins, Marvel Studios, the Tolkien Estate, Disney, Lucasfilm, Netflix, the Duffer Brothers or ABC.</p>
         <p className="mt-1 font-cinzel text-stone-400">Play responsibly.</p>
       </footer>
     </div>
