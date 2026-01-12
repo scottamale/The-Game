@@ -24,7 +24,12 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           onClick={() => onSelectUniverse('Harry Potter')}
           className="group relative h-80 rounded-2xl overflow-hidden border-2 border-slate-800 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-hp"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618588507085-c79565432917?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1618588507085-c79565432917?q=80&w=1000&auto=format&fit=crop" 
+            alt="Harry Potter"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
@@ -39,7 +44,12 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           onClick={() => onSelectUniverse('Hunger Games')}
           className="group relative h-80 rounded-2xl overflow-hidden border-2 border-stone-800 transition-all duration-700 bg-gradient-to-b from-stone-900 to-black card-hg"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1000&auto=format&fit=crop" 
+            alt="Hunger Games"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
@@ -54,7 +64,12 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           onClick={() => onSelectUniverse('Marvel')}
           className="group relative h-80 rounded-2xl overflow-hidden border-2 border-sky-900 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-marvel"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1635863138275-d9b33299680b?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1635863138275-d9b33299680b?q=80&w=1000&auto=format&fit=crop" 
+            alt="Marvel"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
@@ -69,7 +84,12 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           onClick={() => onSelectUniverse('LotR')}
           className="group relative h-80 rounded-2xl overflow-hidden border-2 border-yellow-900 transition-all duration-700 bg-gradient-to-b from-stone-900 to-black card-lotr"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1000&auto=format&fit=crop" 
+            alt="Lord of the Rings"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
@@ -84,7 +104,12 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           onClick={() => onSelectUniverse('Star Wars')}
           className="group relative h-80 rounded-2xl overflow-hidden border-2 border-blue-900 transition-all duration-700 bg-gradient-to-b from-slate-950 to-black card-sw"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1472457897821-70d3819a0e24?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1472457897821-70d3819a0e24?q=80&w=1000&auto=format&fit=crop" 
+            alt="Star Wars"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
@@ -99,7 +124,12 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           onClick={() => onSelectUniverse('Stranger Things')}
           className="group relative h-80 rounded-2xl overflow-hidden border-2 border-red-900 transition-all duration-700 bg-gradient-to-b from-stone-900 to-black card-st"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?q=80&w=1000&auto=format&fit=crop" 
+            alt="Stranger Things"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
@@ -114,7 +144,12 @@ const UniverseSelection: React.FC<UniverseSelectionProps> = ({ onSelectUniverse 
           onClick={() => onSelectUniverse('The Rookie')}
           className="group relative h-80 rounded-2xl overflow-hidden border-2 border-blue-800 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-rookie"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1597022099392-0b299a98e87f?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1590595906931-810e13033124?q=80&w=1000&auto=format&fit=crop" 
+            alt="The Rookie"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">

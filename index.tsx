@@ -59,11 +59,13 @@ interface LeaderboardEntry {
   team: Team;
 }
 
-// --- CONSTANTS & THEMES ---
+// --- CONSTANTS ---
 
 const POINTS_PER_QUESTION = 10;
 const TIMER_SECONDS = 15;
 const DIFFICULTY_DISTRIBUTION = { Easy: 4, Medium: 7, Insane: 4 };
+
+// --- THEMES ---
 
 const HP_THEMES: Record<HP_House, Theme> = {
   Gryffindor: { primary: 'bg-red-950', secondary: 'bg-yellow-600', border: 'border-red-600', text: 'text-yellow-500', accent: 'text-red-400', button: 'bg-gradient-to-r from-red-900 to-red-800', buttonHover: 'hover:from-red-800 hover:to-red-700', gradient: 'from-red-950 via-red-900 to-black', iconColor: 'text-yellow-500' },
@@ -71,36 +73,42 @@ const HP_THEMES: Record<HP_House, Theme> = {
   Ravenclaw: { primary: 'bg-blue-950', secondary: 'bg-amber-100', border: 'border-blue-500', text: 'text-blue-300', accent: 'text-blue-200', button: 'bg-gradient-to-r from-blue-900 to-blue-800', buttonHover: 'hover:from-blue-800 hover:to-blue-700', gradient: 'from-blue-950 via-blue-900 to-black', iconColor: 'text-blue-300' },
   Hufflepuff: { primary: 'bg-yellow-950', secondary: 'bg-neutral-900', border: 'border-yellow-600', text: 'text-yellow-400', accent: 'text-yellow-200', button: 'bg-gradient-to-r from-yellow-700 to-yellow-600', buttonHover: 'hover:from-yellow-600 hover:to-yellow-500', gradient: 'from-yellow-950 via-yellow-900 to-black', iconColor: 'text-yellow-400' }
 };
+
 const HG_THEMES: Record<HG_Faction, Theme> = {
   'District 12': { primary: 'bg-stone-900', secondary: 'bg-orange-600', border: 'border-orange-700', text: 'text-orange-500', accent: 'text-stone-400', button: 'bg-gradient-to-r from-stone-800 to-stone-700', buttonHover: 'hover:from-stone-700 hover:to-stone-600', gradient: 'from-stone-900 via-stone-800 to-black', iconColor: 'text-orange-500' },
   'District 2': { primary: 'bg-red-950', secondary: 'bg-stone-400', border: 'border-red-800', text: 'text-red-500', accent: 'text-stone-300', button: 'bg-gradient-to-r from-red-900 to-red-800', buttonHover: 'hover:from-red-800 hover:to-red-700', gradient: 'from-red-950 via-red-900 to-black', iconColor: 'text-red-500' },
   'District 4': { primary: 'bg-cyan-950', secondary: 'bg-teal-400', border: 'border-cyan-700', text: 'text-cyan-400', accent: 'text-teal-200', button: 'bg-gradient-to-r from-cyan-900 to-cyan-800', buttonHover: 'hover:from-cyan-800 hover:to-cyan-700', gradient: 'from-cyan-950 via-cyan-900 to-black', iconColor: 'text-cyan-400' },
   'The Capitol': { primary: 'bg-fuchsia-950', secondary: 'bg-purple-900', border: 'border-fuchsia-600', text: 'text-fuchsia-400', accent: 'text-pink-200', button: 'bg-gradient-to-r from-fuchsia-900 to-fuchsia-800', buttonHover: 'hover:from-fuchsia-800 hover:to-fuchsia-700', gradient: 'from-fuchsia-950 via-purple-900 to-black', iconColor: 'text-fuchsia-300' }
 };
+
 const MARVEL_THEMES: Record<Marvel_Faction, Theme> = {
   'Avengers': { primary: 'bg-blue-900', secondary: 'bg-red-600', border: 'border-blue-500', text: 'text-blue-400', accent: 'text-red-400', button: 'bg-gradient-to-r from-blue-800 to-blue-700', buttonHover: 'hover:from-blue-700 hover:to-blue-600', gradient: 'from-blue-950 via-slate-900 to-black', iconColor: 'text-blue-400' },
   'Guardians': { primary: 'bg-purple-950', secondary: 'bg-pink-500', border: 'border-purple-500', text: 'text-purple-400', accent: 'text-pink-300', button: 'bg-gradient-to-r from-purple-900 to-purple-800', buttonHover: 'hover:from-purple-800 hover:to-purple-700', gradient: 'from-purple-950 via-indigo-900 to-black', iconColor: 'text-purple-300' },
   'Wakanda': { primary: 'bg-stone-900', secondary: 'bg-violet-600', border: 'border-violet-500', text: 'text-violet-400', accent: 'text-stone-300', button: 'bg-gradient-to-r from-stone-800 to-stone-700', buttonHover: 'hover:from-stone-700 hover:to-stone-600', gradient: 'from-black via-stone-900 to-violet-950', iconColor: 'text-violet-400' },
   'Asgard': { primary: 'bg-slate-900', secondary: 'bg-yellow-500', border: 'border-yellow-600', text: 'text-yellow-500', accent: 'text-yellow-200', button: 'bg-gradient-to-r from-yellow-700 to-yellow-600', buttonHover: 'hover:from-yellow-600 hover:to-yellow-500', gradient: 'from-slate-950 via-slate-900 to-yellow-950', iconColor: 'text-yellow-400' }
 };
+
 const LOTR_THEMES: Record<LotR_Faction, Theme> = {
   'The Fellowship': { primary: 'bg-emerald-900', secondary: 'bg-emerald-600', border: 'border-emerald-500', text: 'text-emerald-300', accent: 'text-yellow-200', button: 'bg-gradient-to-r from-emerald-800 to-emerald-700', buttonHover: 'hover:from-emerald-700 hover:to-emerald-600', gradient: 'from-emerald-950 via-stone-900 to-black', iconColor: 'text-emerald-400' },
   'Mordor': { primary: 'bg-red-950', secondary: 'bg-orange-600', border: 'border-red-700', text: 'text-red-500', accent: 'text-orange-500', button: 'bg-gradient-to-r from-red-900 to-red-800', buttonHover: 'hover:from-red-800 hover:to-red-700', gradient: 'from-black via-red-950 to-orange-950', iconColor: 'text-red-500' },
   'Elves of Rivendell': { primary: 'bg-teal-900', secondary: 'bg-cyan-200', border: 'border-teal-400', text: 'text-teal-200', accent: 'text-white', button: 'bg-gradient-to-r from-teal-800 to-teal-700', buttonHover: 'hover:from-teal-700 hover:to-teal-600', gradient: 'from-teal-950 via-slate-900 to-black', iconColor: 'text-teal-300' },
   'Dwarves of Erebor': { primary: 'bg-amber-900', secondary: 'bg-yellow-600', border: 'border-amber-600', text: 'text-amber-500', accent: 'text-yellow-500', button: 'bg-gradient-to-r from-amber-800 to-amber-700', buttonHover: 'hover:from-amber-700 hover:to-amber-600', gradient: 'from-stone-950 via-amber-950 to-black', iconColor: 'text-amber-500' }
 };
+
 const SW_THEMES: Record<SW_Faction, Theme> = {
   'Jedi Order': { primary: 'bg-blue-900', secondary: 'bg-blue-400', border: 'border-blue-400', text: 'text-blue-300', accent: 'text-white', button: 'bg-gradient-to-r from-blue-800 to-blue-600', buttonHover: 'hover:from-blue-700 hover:to-blue-500', gradient: 'from-blue-950 via-slate-900 to-black', iconColor: 'text-blue-400' },
   'The Sith': { primary: 'bg-red-950', secondary: 'bg-red-600', border: 'border-red-600', text: 'text-red-500', accent: 'text-red-200', button: 'bg-gradient-to-r from-red-900 to-red-800', buttonHover: 'hover:from-red-800 hover:to-red-700', gradient: 'from-red-950 via-black to-red-900', iconColor: 'text-red-500' },
   'Rebel Alliance': { primary: 'bg-orange-900', secondary: 'bg-orange-500', border: 'border-orange-500', text: 'text-orange-400', accent: 'text-white', button: 'bg-gradient-to-r from-orange-800 to-orange-700', buttonHover: 'hover:from-orange-700 hover:to-orange-600', gradient: 'from-orange-950 via-stone-900 to-black', iconColor: 'text-orange-500' },
   'Galactic Empire': { primary: 'bg-zinc-900', secondary: 'bg-white', border: 'border-zinc-500', text: 'text-zinc-300', accent: 'text-white', button: 'bg-gradient-to-r from-zinc-800 to-zinc-700', buttonHover: 'hover:from-zinc-700 hover:to-zinc-600', gradient: 'from-zinc-950 via-black to-zinc-900', iconColor: 'text-white' }
 };
+
 const ST_THEMES: Record<ST_Faction, Theme> = {
   'The Party': { primary: 'bg-purple-900', secondary: 'bg-red-500', border: 'border-purple-500', text: 'text-purple-300', accent: 'text-red-400', button: 'bg-gradient-to-r from-purple-900 to-purple-700', buttonHover: 'hover:from-purple-800 hover:to-purple-600', gradient: 'from-purple-950 via-indigo-900 to-black', iconColor: 'text-purple-400' },
   'Scoops Ahoy': { primary: 'bg-blue-800', secondary: 'bg-red-500', border: 'border-red-500', text: 'text-white', accent: 'text-red-400', button: 'bg-gradient-to-r from-blue-700 to-blue-600', buttonHover: 'hover:from-blue-600 hover:to-blue-500', gradient: 'from-blue-900 via-white/10 to-red-900', iconColor: 'text-white' },
   'Hellfire Club': { primary: 'bg-black', secondary: 'bg-red-600', border: 'border-red-600', text: 'text-red-500', accent: 'text-white', button: 'bg-gradient-to-r from-red-900 to-black', buttonHover: 'hover:from-red-800 hover:to-stone-900', gradient: 'from-black via-red-950 to-black', iconColor: 'text-red-500' },
   'Hawkins High': { primary: 'bg-green-800', secondary: 'bg-orange-500', border: 'border-orange-500', text: 'text-orange-400', accent: 'text-white', button: 'bg-gradient-to-r from-green-900 to-green-700', buttonHover: 'hover:from-green-800 hover:to-green-600', gradient: 'from-green-950 via-orange-900 to-black', iconColor: 'text-orange-400' }
 };
+
 const ROOKIE_THEMES: Record<Rookie_Faction, Theme> = {
   'Mid-Wilshire': { primary: 'bg-slate-900', secondary: 'bg-blue-600', border: 'border-blue-700', text: 'text-blue-100', accent: 'text-yellow-400', button: 'bg-gradient-to-r from-slate-800 to-slate-700', buttonHover: 'hover:from-slate-700 hover:to-slate-600', gradient: 'from-slate-950 via-blue-950 to-black', iconColor: 'text-blue-400' },
   'Detectives': { primary: 'bg-stone-800', secondary: 'bg-amber-600', border: 'border-stone-600', text: 'text-stone-200', accent: 'text-amber-500', button: 'bg-gradient-to-r from-stone-800 to-stone-700', buttonHover: 'hover:from-stone-700 hover:to-stone-600', gradient: 'from-stone-900 via-stone-800 to-black', iconColor: 'text-amber-500' },
@@ -509,29 +517,26 @@ const startAmbient = (universe: 'Harry Potter' | 'Hunger Games' | 'Marvel' | 'Lo
     lfo.start();
     ambientNodes.push(osc1, osc2, lfo, lfoGain, filter, ambientGain);
   } else if (universe === 'The Rookie') {
-    // City Ambience + Distant Sirens
-    const osc1 = ctx.createOscillator(); // Siren
-    const osc2 = ctx.createOscillator(); // Siren modulation
+    const osc1 = ctx.createOscillator(); 
+    const osc2 = ctx.createOscillator(); 
     const gain1 = ctx.createGain();
     const filter = ctx.createBiquadFilter();
 
-    // Siren
     osc1.type = 'triangle';
     osc1.frequency.value = 600;
     
-    // LFO for siren pitch
     osc2.type = 'sawtooth';
-    osc2.frequency.value = 0.2; // slow rise and fall
+    osc2.frequency.value = 0.2; 
     const lfoGain = ctx.createGain();
-    lfoGain.gain.value = 400; // Pitch range
+    lfoGain.gain.value = 400; 
     
     osc2.connect(lfoGain);
     lfoGain.connect(osc1.frequency);
     
-    gain1.gain.value = 0.2; // Quiet distant siren
+    gain1.gain.value = 0.2; 
     
     filter.type = 'lowpass';
-    filter.frequency.value = 800; // Muffled distance
+    filter.frequency.value = 800; 
     
     osc1.connect(filter);
     filter.connect(gain1);
@@ -577,7 +582,12 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         <button onClick={() => onSelectUniverse('Harry Potter')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-slate-800 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-hp">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618588507085-c79565432917?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1618588507085-c79565432917?q=80&w=1000&auto=format&fit=crop" 
+            alt="Harry Potter"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
             <Wand2 className="w-10 h-10 text-blue-400 mb-4 group-hover:rotate-12 transition-transform duration-700 ease-in-out" />
@@ -587,7 +597,12 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
         </button>
 
         <button onClick={() => onSelectUniverse('Hunger Games')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-stone-800 transition-all duration-700 bg-gradient-to-b from-stone-900 to-black card-hg">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1000&auto=format&fit=crop" 
+            alt="Hunger Games"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
             <Flame className="w-10 h-10 text-orange-500 mb-4 group-hover:-translate-y-2 transition-transform duration-700 ease-in-out" />
@@ -597,7 +612,12 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
         </button>
 
         <button onClick={() => onSelectUniverse('Marvel')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-sky-900 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-marvel">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1635863138275-d9b33299680b?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1635863138275-d9b33299680b?q=80&w=1000&auto=format&fit=crop" 
+            alt="Marvel"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
             <Zap className="w-10 h-10 text-sky-400 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
@@ -607,7 +627,12 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
         </button>
 
         <button onClick={() => onSelectUniverse('LotR')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-yellow-900 transition-all duration-700 bg-gradient-to-b from-stone-900 to-black card-lotr">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1000&auto=format&fit=crop" 
+            alt="Lord of the Rings"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
             <Mountain className="w-10 h-10 text-yellow-500 mb-4 group-hover:-translate-y-1 transition-transform duration-700 ease-in-out" />
@@ -617,7 +642,12 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
         </button>
 
         <button onClick={() => onSelectUniverse('Star Wars')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-blue-900 transition-all duration-700 bg-gradient-to-b from-slate-950 to-black card-sw">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1472457897821-70d3819a0e24?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1472457897821-70d3819a0e24?q=80&w=1000&auto=format&fit=crop" 
+            alt="Star Wars"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
             <Sword className="w-10 h-10 text-blue-500 mb-4 group-hover:rotate-45 transition-transform duration-700 ease-in-out" />
@@ -627,7 +657,12 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
         </button>
 
         <button onClick={() => onSelectUniverse('Stranger Things')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-red-900 transition-all duration-700 bg-gradient-to-b from-stone-900 to-black card-st">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?q=80&w=1000&auto=format&fit=crop" 
+            alt="Stranger Things"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
             <Radio className="w-10 h-10 text-red-500 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
@@ -637,7 +672,12 @@ const UniverseSelection: React.FC<{ onSelectUniverse: (universe: Universe) => vo
         </button>
 
         <button onClick={() => onSelectUniverse('The Rookie')} className="group relative h-80 rounded-2xl overflow-hidden border-2 border-blue-800 transition-all duration-700 bg-gradient-to-b from-slate-900 to-black card-rookie">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596570769642-e64627402c03?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1563205764-7963c87e199a?q=80&w=1000&auto=format&fit=crop" 
+            alt="The Rookie"
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-1000 group-hover:scale-110"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-8 text-left z-10">
             <Shield className="w-10 h-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-700 ease-in-out" />
